@@ -1,9 +1,43 @@
 const blogModel = require('../model/blog.model');
-
 const blogRouter=require('express').Router();
+const multer=require('multer');
+const path =require('path');
+const commentModel = require('../model/comment.model');
 
-// add blog in DB
-blogRouter.post('/blog/blogBlog',async(req,res)=>{
+
+const storage=multer.diskStorage({
+  destination:(req,file,cb)=>{
+      cb(null,'./blogImages');
+  },
+  filename:(req,file,cb)=>{
+      const fileExt=path.extname(file.originalname);
+      const filename=file.originalname.replace(fileExt,"").toLowerCase().split(' ').join('-'+"-"+Date.now());
+      cb(null,filename+fileExt);    
+  }
+});
+
+const upload=multer({
+  storage:storage,
+  limits:{
+      fileSize:10000000
+  },
+  fileFilter:(req,file,cb)=>{
+      if(file.mimetype==='image/jpg'||file.mimetype==='image/jpeg'||file.mimetype==='image/png'){
+          cb(null,true);
+      }else{
+          cb(new Error('Only accept for JPG/JPEG/PNG type file'));
+      }
+  }
+});
+
+// blogRouter.post('/imageUp',upload.single('blogPhoto'),async(req,res)=>{
+//   res.status(200).json('Successfully');
+//   console.log(req.file);
+// })
+
+
+// Post blog in DB
+blogRouter.post('/blog/blogPost',upload.single('blogPhoto'),async(req,res)=>{
 
   try {
     if (req.body.title&&req.body.dsc&&req.body.userId) {
@@ -11,15 +45,15 @@ blogRouter.post('/blog/blogBlog',async(req,res)=>{
             title:req.body.title,
             dsc:req.body.dsc,
             catagory:req.body.catagory,
-            photo:req.body.photo,
+            photo:req.file.filename,
             user:req.body.userId,
             username:req.body.username,
             userPp:req.body.userProfile,
         });
         await newblog.save();
-        return res.status(200).json({message:"Your blog is successsfully bloged"});
+        return res.status(200).json({message:"Your blog is successsfully posted"});
        } else {
-        return res.status(400).json({message:"Please title and dsc has add the blog "});
+        return res.status(400).json({message:"Please title and dsc has add the post "});
        }
   } catch (error) {
     return res.status(400).json({message:error.message});
@@ -42,7 +76,12 @@ blogRouter.get("/blog/singleBlog/:blogId",async(req,res)=>{
   return res.status(400).json({message:error.message});
  };
 });
-// User blog from DB
+
+
+
+// Get  blog from DB
+
+// Get userBlog from bd
 blogRouter.get("/blog/userBlogs/:userId",async(req,res)=>{
   try {
    const userId=req.params.userId;
@@ -57,9 +96,11 @@ blogRouter.get("/blog/userBlogs/:userId",async(req,res)=>{
   };
  });
 
- blogRouter.get("/blog/allBlogss",async(req,res)=>{
+
+// Get All Blog from Db
+
+ blogRouter.get("/blog/allBlogs",async(req,res)=>{
   try {
-  //  const userId=req.params.userId;
    const userblogs=await blogModel.find();
    if (userblogs) {
      return res.status(200).json(userblogs);
@@ -74,10 +115,15 @@ blogRouter.get("/blog/userBlogs/:userId",async(req,res)=>{
 
 //  Update Blog from DB
 
-blogRouter.patch("/blog/update/:blogId",async(req,res)=>{
+blogRouter.patch("/blog/update/:blogId",upload.single('blogPhoto'),async(req,res)=>{
   try {
     const blogId=req.params.blogId;
-    const updateblog=await blogModel.updateOne({_id:blogId},{$set:req.body});
+    const updateblog=await blogModel.updateOne({_id:blogId},{$set:{
+            title:req.body.title,
+            dsc:req.body.dsc,
+            catagory:req.body.catagory,
+            photo:req.file.filename,
+    }});
     if(updateblog){
       return res.status(200).json({message:"Your blog has been updated"});
     }else{
@@ -95,13 +141,21 @@ blogRouter.patch("/blog/update/:blogId",async(req,res)=>{
 
 blogRouter.delete("/blog/delete/:blogId",async(req,res)=>{
   try {
+    const userId=req.body.userId;
     const blogId=req.params.blogId;
-    const deleteblog=await blogModel.findByIdAndDelete(blogId);
-    if(deleteblog){
-      return res.status(200).json({message:"Your blog has been deleted"});
-    }else{
-    return res.status(404).json({message:`Sorry..!! Your blog hasn't deleted`});
+    const blog=await blogModel.findById(blogId);
+
+    if (blog.user===userId) {
+      const deleteblog=await blogModel.findByIdAndDelete(blogId);
+      const deleteBlogComments=await commentModel.deleteMany({blogId:blogId});
+
+      if(deleteblog&&deleteBlogComments){
+        return res.status(200).json({message:"Your blog has been deleted"});
+      }
+    } else {
+      return res.status(404).json({message:`Sorry..!! Your Can't delete Another user Blog`});
     }
+ 
   } catch (error) {
     return res.status(404).json({message:error.message});
   };
