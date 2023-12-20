@@ -1,38 +1,402 @@
-.App {
-  text-align: center;
+/* Initial */
+*{
+  /* background-color: #282c34; */
+  /* color: aliceblue; */
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  /* overflow-x: hidden; */
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+
+
+
+.container{
+  margin: 1rem ;
+  padding: 1rem;
 }
 
-.App-header {
+
+/* Background Color Combination */
+.bgBlack{
+  background-color: black;
+  color: aliceblue;
+}
+.bgWhite{
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+.bgEsh{
   background-color: #282c34;
-  min-height: 100vh;
+  color: aliceblue;
+}
+
+.bgSuccess{
+  background-color: green;
+  color: #282c34;
+}.bgSuccess:hover{
+  background-color: rgb(1, 110, 1);
+  color: #000000;
+}
+.bgPrimary{
+  background-color: rgb(7, 76, 202);
+  color: rgb(24, 23, 23);
+}.bgPrimary:hover{
+  background-color: rgb(0, 89, 255);
+  color: black;
+}
+.bgDanger{
+  background-color: rgb(226, 6, 90);
+  color: black;
+}.bgDanger:hover{
+  background-color: rgb(187, 5, 75);
+  color: rgb(34, 33, 33);
+}.bgNone{
+  background: none;
+}
+
+/* Color Combination */
+.colorWhite{
+  color: rgb(255, 255, 255);
+}.colorBlack{
+  color: rgb(0, 0, 0);
+}.colorPurple{
+  color: purple;
+}.colorYellow{
+  color: yellow;
+}.colorSuccess{
+  color: green;
+}.colorPrimary{
+  color: rgb(6, 83, 226);
+}.colorDanger{
+  color: rgb(226, 6, 90);
+}
+
+/* Display style */
+
+.flexRow{
+  display: flex;
+  flex-direction: row;
+}.flexRowJcCenter{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}.flexRowSpaceBtwn{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}.flexRowAiCenter{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}.flexRowCenter{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexCol{
+  display: flex;
+  flex-direction: column;
+}.flexColJcCenter{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}.flexColAiCenter{
   display: flex;
   flex-direction: column;
   align-items: center;
+}.flexColCenter{
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.displayNone{
+  display: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Margin */
+
+
+.mg1{
+  margin: 1rem;
+}.mg2{
+  margin: 2rem;
 }
+.mgAuto{
+  margin: 0 auto;
+}.mgRHalf{
+  margin-right: .4rem;
+}.mgR1{
+  margin-right: 1rem;
+}.mgR2{
+  margin-right: 2rem;
+}.mgR3{
+  margin-right: 3rem;
+}.mgR4{
+  margin-right: 4rem;
+}.mgLHalf{
+  margin-left: .4rem;
+}.mgL1{
+  margin-left: 1rem;
+}.mgL2{
+  margin-left: 2rem;
+}.mgL3{
+  margin-left: 3rem;
+}.mgL4{
+  margin-left: 4rem;
+}.mgTHalf{
+  margin-top: .4rem;
+}.mgT1{
+  margin-top: 1rem;
+}.mgT2{
+  margin-top: 2rem;
+}.mgT3{
+  margin-top: 3rem;
+}.mgT4{
+  margin-top: 4rem;
+}.mgBHalf{
+  margin-bottom: .4rem;
+}.mgB1{
+  margin-bottom: 1rem;
+}.mgRB2{
+  margin-bottom: 2rem;
+}.mgB3{
+  margin-bottom: 3rem;
+}.mgB4{
+  margin-bottom: 4rem;
+}
+
+/* Padding */
+.pd1{
+  padding: .5rem 1rem;
+}.pd2{
+  padding: .6rem 1.2rem;
+}.pd3{
+  padding: .8rem 1.8rem;
+}.pd4{
+  padding: 1rem 2rem;
+}
+.pdRHalf{
+  padding-right: .4rem;
+}.pdR1{
+  padding-right: 1rem;
+}.pdR2{
+  padding-right: 2rem;
+}.pdR3{
+  padding-right: 3rem;
+}.pdR4{
+  padding-right: 4rem;
+}.pdLHalf{
+  padding-left: .4rem;
+}.pdL1{
+  padding-left: 1rem;
+}.pdL2{
+  padding-left: 2rem;
+}.pdL3{
+  padding-left: 3rem;
+}.pdL4{
+  padding-left: 4rem;
+}.pdTHalf{
+  padding-top: .4rem;
+}.pdT1{
+  padding-top: 1rem;
+}.pdT2{
+  padding-top: 2rem;
+}.pdT3{
+  padding-top: 3rem;
+}.pdT4{
+  padding-top: 4rem;
+}.pdBHalf{
+  padding-bottom: .4rem;
+}.pdB1{
+  padding-bottom: 1rem;
+}.pdRB2{
+  padding-bottom: 2rem;
+}.pdB3{
+  padding-bottom: 3rem;
+}.pdB4{
+  padding-bottom: 4rem;
+}
+
+
+/* Font familly*/
+.fontCourier{
+  font-family: 'Courier New', Courier, monospace;
+}.fontMonospace{
+  font-family: monospace;
+}.fontRoman{
+  font-family: 'Times New Roman', Times, serif;
+}.fontCambria{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+/* Font Style*/
+.fontItalic{
+  font-style: italic;
+}
+/* Font size*/
+.fontSm{
+  font-size: 1rem;
+}.fontSMd{
+  font-size: 1.2rem;
+}.fontMd{
+  font-size: 1.5rem;
+}.fontL{
+  font-size: 2rem;
+}.fontHL{
+  font-size: 2.5rem;
+}
+
+/* font weight */
+.fontLighter{
+  font-weight: 500;
+}.fontBolder{
+  font-weight: bolder;
+}.fontBold1{
+  font-weight: bold;
+}.fontBold2{
+  font-weight: 700;
+}.fontBold3{
+  font-weight: 800;
+}.fontBold4{
+  font-weight: 900;
+}
+
+
+/* Text */
+.textCenter{
+  text-align: center;
+}.textRight{
+  text-align: right;
+}.textLeft{
+  text-align: left;
+}.textJustify{
+  text-align: justify;
+}.textDecorNone:hover{
+  text-decoration: none;
+}.textDecorDas{
+  text-decoration: dashed;
+}
+
+/* Border */
+.border1{
+  border: 1px solid rgb(255, 255, 255);
+}.border2{
+  border: 2px solid rgb(255, 255, 255);
+}.border3{
+  border: 3px solid rgb(255, 255, 255);
+}
+.borderL1{
+  border-left: 1px solid rgb(255, 255, 255);
+}.borderL2{
+  border-left: 2px solid rgb(255, 255, 255);
+}.borderL3{
+  border-left: 3px solid rgb(255, 255, 255);
+}.borderR1{
+  border-right: 1px solid rgb(255, 255, 255);
+}.borderR2{
+  border-right: 2px solid rgb(255, 255, 255);
+}.borderR3{
+  border-right: 3px solid rgb(255, 255, 255);
+}.borderT1{
+  border-top: 1px solid rgb(255, 255, 255);
+}.borderT2{
+  border-top: 2px solid rgb(255, 255, 255);
+}.borderT3{
+  border-top: 3px solid rgb(255, 255, 255);
+}.borderB1{
+  border-bottom: 1px solid rgb(255, 255, 255);
+}.borderB2{
+  border-bottom: 2px solid rgb(31, 28, 28);
+}.borderB3{
+  border-bottom: 3px solid rgb(255, 255, 255);
+}.borderNone{
+  border: none;
+  outline: none;
+}
+.borderRadHalf{
+  border-radius: .5rem;
+}.borderRad1{
+  border-radius: 1rem;
+}.borderRad2{
+  border-radius: 2rem;
+}.borderRad3{
+  border-radius: 3rem;
+}.borderRad4{
+  border-radius: 4rem;
+}.borderRad25{
+  border-radius: 25%;
+}.borderRad50{
+  border-radius: 50%;
+}.borderRad100{
+  border-radius: 100%;
+}
+
+/* height */
+.height1{
+  height: 2rem;
+}.height2{
+  height: 3rem;
+}.height3{
+  height: 5rem;
+}.height25VH{
+  height: 25vh;
+}.height50VH{
+  height: 50vh;
+}.height100VH{
+  height: 100vh;
+}
+
+.width1{
+  width: 5rem;
+}.width2{
+  width: 10rem;
+}.width2s{
+  width: 13rem;
+}.width3{
+  width: 15rem;
+}.width3s{
+  width: 18rem;
+}.width4{
+  width: 20rem;
+}.width4s{
+  width: 23rem;
+}.width20{
+  width: 20%;
+}.width30{
+  width: 30%;
+}.width40{
+  width: 40%;
+}.width50{
+  width:50%;
+}.width60{
+  width: 60%;
+}.width70{
+  width: 70%;
+}.width80{
+  width: 80%;
+}.width100{
+  width: 100%;
+}
+
+
+

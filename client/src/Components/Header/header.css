@@ -1,0 +1,257 @@
+
+.header{
+    height: 5rem;
+    position: fixed;
+    width: 100%;
+}
+.navber{
+    height: 5rem;
+    z-index: 10000;
+}
+#searchBtn{
+    background-color: yellowgreen;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: .2rem .4rem;
+    font-size: 1.3rem;
+    border-radius: 2rem;
+    /* display: none; */
+}
+.navSearch{
+    background-color: rgba(178, 190, 201, 0.644);
+} 
+
+
+.catagroyDrop{
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: -11rem;
+    background-color: rgb(255, 255, 255);
+}
+/* .catagroyDrop:focus{
+    margin-bottom: -10rem;
+} */
+.catagroyDrop button{
+    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    background: none;
+    border: none;
+    outline: none;
+}
+.dropUL{
+    position: relative;
+    top: 2rem;
+    background-color: blanchedalmond;
+    padding: .2rem .6rem;
+    border-radius: .4rem;
+}
+.dropUL li{
+        margin: .2rem 0;
+        font-size: 1.2rem;
+        font-weight: 800;
+        font-family: 'Courier New', Courier, monospace;
+        padding: .4rem .6rem;
+        color: rgb(1, 11, 20);
+        border-radius: 1rem;
+}
+#logBtn{
+    background-color: rgb(9, 169, 243);
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: .2rem .4rem;
+    font-size: 1.3rem;
+    font-weight: 800;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 2rem;
+    margin:0 1rem ;
+}
+.logo2{
+    display: none;
+}
+
+
+#OpenNavBtn{
+    /* z-index: 2000; */
+   color: rgb(5, 79, 139);
+   background:none;
+   padding: .2rem;
+   font-size: 1.5rem;
+   font-family: 'Courier New', Courier, monospace;
+    display: none;
+   border: none;
+   cursor: pointer;
+   outline: none;
+}
+.CloseNavBtn{
+    cursor: pointer;
+   color: rgb(199, 10, 10);
+   padding: .1rem .3rem;
+   background: none;
+   font-size: 1.8rem;
+   border-radius: 50%;
+   font-family: 'Courier New', Courier, monospace;
+    display: none;
+   /* border: none;
+   outline: none; */
+}
+
+@media screen and (max-width:1100px) {
+    .nav .navber{
+        margin-bottom: -43rem;
+        margin-right: -10%;
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 20rem;
+        height: 40rem;
+        background-color: rgb(2, 43, 43);
+        padding: 2rem 0;
+        overflow-y: scroll;
+
+    }
+    .nav .navber ul{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        /* top: -3rem; */
+        /* justify-content: center;
+        align-items: center; */
+    }
+    .nav .navber ul .navList{
+        margin: 1rem 0;
+        width: 15rem;
+        background-color: rgb(10, 10, 10);
+        font-size: 1.4rem;
+        font-weight: 800;
+        font-family: 'Courier New', Courier, monospace;
+        padding: .4rem .6rem;
+        color: aliceblue;
+        border-radius: 1rem;
+
+    }
+    .catagroyDrop{
+        margin-top:0rem ;
+        width: 15rem;
+        margin-bottom: 0;
+        background-color: rgb(129, 114, 114);
+    }.catagroyDrop button{
+        font-size: 1.4rem;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: 900;
+        background: none;
+        border: none;
+        outline: none;
+    }
+    .dropUL{
+        background-color: rgb(53, 42, 27);
+        padding: .2rem .6rem;
+        display: none;
+        border-radius: .4rem;
+    }
+    .dropUL li{
+            /* margin: .2rem 0; */
+            font-size: 1.2rem;
+            font-weight: 800;
+            font-family: 'Courier New', Courier, monospace;
+            padding: .4rem .6rem;
+            color: aliceblue;
+    }    
+    .navLink{
+        color: rgb(255, 255, 255);
+        background: rgb(2, 43, 43);
+    }
+    #logBtn{
+
+        margin:0 2rem 0 0  ;
+    }
+    #OpenNavBtn{
+        display: inline-block;
+    }
+    /* .closeNav{
+        position: relative;
+        margin-top: -3rem;
+    } */
+    .CloseNavBtn{
+        display: inline;
+    }
+
+}
+
+@media screen and (max-width:900px) {
+    .nav .navber{
+        margin-right: -25%;
+    }
+
+}
+@media screen and (max-width:800px) {
+    .nav .navber{
+        margin-bottom: -44rem;
+        margin-right: -15%;
+    }
+    .nav .navSearch{
+        margin-right: -40%;
+        z-index: 1000;
+        width: 15rem;
+    }
+    /* #OpenNavBtn{
+        margin-right: -5rem;
+    } */
+}
+@media screen and (max-width:600px) {
+    .nav .navber{
+        margin-right: 1rem;
+    }
+    .nav .navSearch{
+        margin-right: -75%;
+        z-index: 1000;
+    }
+
+}
+@media screen and (max-width:520px) {
+    .nav .navber{
+        margin-right: 4rem;
+    }
+    /* #OpenNavBtn{
+        margin-right: 5rem;
+    } */
+
+}
+@media screen and (max-width:450px) {
+    .nav .navber{
+        margin-right: -20%;
+    }
+    .nav .navSearch{
+        margin-right: -60%;
+        z-index: 1000;
+    }
+    .logo2{
+        display: inline;
+    }
+    .logo1{
+        display: none;
+    }
+    .logo h1{
+        width: 4rem;
+    }
+    /* #OpenNavBtn{
+        margin-right: 2rem;
+    } */
+}
+
+@media screen and (max-width:370px) {
+    .nav .navSearch{
+        width: 13rem;
+    }
+   .nav .navSearch input{
+    width: 80%;
+    font-size: .8rem;
+    font-weight: 500;
+    font-family: 'Courier New', Courier, monospace;
+} 
+}
+
+
+
+

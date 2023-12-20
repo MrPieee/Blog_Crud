@@ -79,7 +79,6 @@ blogRouter.get("/blog/singleBlog/:blogId",async(req,res)=>{
 
 
 
-// Get  blog from DB
 
 // Get userBlog from bd
 blogRouter.get("/blog/userBlogs/:userId",async(req,res)=>{
@@ -97,13 +96,36 @@ blogRouter.get("/blog/userBlogs/:userId",async(req,res)=>{
  });
 
 
+// Get Catagoryways blog from bd
+blogRouter.get("/blog/catagoryWaysBlog/:blogCata",async(req,res)=>{
+  try {
+   const blogCata=req.params.blogCata;
+   const catagoriesBlog=await blogModel.find({catagory:blogCata});
+   if (catagoriesBlog) {
+     return res.status(200).json(catagoriesBlog);
+   } else {
+     return res.status(400).json({message:"Sorry..!!can't find your blogs"});
+   }
+  } catch (error) {
+   return res.status(400).json({message:error.message});
+  };
+ });
+
 // Get All Blog from Db
+const shuffle = (a) => {
+  for (let i = a.length; i; i--) {
+      let j = Math.floor(Math.random() * i);
+      [a[i - 1], a[j]] = [a[j], a[i - 1]];
+  }
+}
 
  blogRouter.get("/blog/allBlogs",async(req,res)=>{
   try {
    const userblogs=await blogModel.find();
    if (userblogs) {
+    shuffle(userblogs);
      return res.status(200).json(userblogs);
+    
    } else {
      return res.status(400).json({message:"Sorry..!!can't find your blogs"});
    }
