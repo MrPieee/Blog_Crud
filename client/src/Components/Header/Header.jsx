@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './header.css';
 import {Link} from'react-router-dom';
 import {FontAwesomeIcon} from'@fortawesome/react-fontawesome';
 import { faBars, faClose, faMagnifyingGlass} from'@fortawesome/free-solid-svg-icons';
+import { LogInContext } from '../../App';
 
 const Header = () => {
+  const [loginAuth]=useContext(LogInContext);
 
   const [dropOpen,setDropOpen]=useState(false);
- console.log(dropOpen);
+//  console.log(dropOpen);
 
+  const handleLogOut=async () => {
+    await fetch('/api/user/logOut',{method:"POST"})
+      .then((res)=>res.json())
+      .then((res)=>{
+        if(res){
+          alert(res.message);
+          window.location.href='/login';
+        }
+      });
+  };
 
 
   return (
@@ -47,21 +59,21 @@ const Header = () => {
                             dropOpen===true?
                             <>
                              <ul className='flexColCenter dropUL'  style={{listStyle:"none"}}>
-                             <Link to={'/catagory/love'} className='textDecorNone bgWhite navLink'>
+                             <a href={'/catagory/love'} className='textDecorNone bgWhite navLink'>
                                <li>Love Story</li>
-                             </Link>
-                             <Link to={'/catagory/sad'} className='textDecorNone bgWhite navLink'>
+                             </a>
+                             <a href={'/catagory/sad'} className='textDecorNone bgWhite navLink'>
                                <li>Sad Story</li>
-                             </Link>
-                             <Link to={'/catagory/broken'} className='textDecorNone bgWhite navLink'>
+                             </a>
+                             <a href={'/catagory/broken'} className='textDecorNone bgWhite navLink'>
                                <li>Broken Story</li>
-                             </Link>
-                             <Link to={'/catagory/success'} className='textDecorNone bgWhite navLink'>
+                             </a>
+                             <a href={'/catagory/success'} className='textDecorNone bgWhite navLink'>
                                <li>Success Story</li>
-                             </Link>
-                              <Link to={'/catagory/thriller'} className='textDecorNone bgWhite navLink'>
+                             </a>
+                              <a href={'/catagory/thriller'} className='textDecorNone bgWhite navLink'>
                                <li>Thriller Story</li>
-                              </Link>
+                              </a>
                             </ul>
                             </>:''
                            }
@@ -78,7 +90,12 @@ const Header = () => {
                     </Link>
               </ul>
               <div className="logOut">
-                <button id='logBtn'>LogIn</button>
+                
+                {
+                  loginAuth
+                  ?<button onClick={handleLogOut} id='logBtn'>LogOut</button>
+                  :<Link to={'/login'}><button id='logBtn'>LogIn</button></Link>
+                }
               </div>
             </nav>
             <div id='OpenNav'><button id='OpenNavBtn' onClick={()=>{

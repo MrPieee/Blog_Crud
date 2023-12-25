@@ -367,6 +367,8 @@ code {
 }
 
 .width1{
+  width: 3rem;
+}.width1s{
   width: 5rem;
 }.width2{
   width: 10rem;

@@ -33,6 +33,22 @@ commentRouter.post('/comment/commentPost',async(req,res)=>{
   };
  });
 
+ // Get Blog comments from Db
+
+ commentRouter.get("/comment/blogcomments/:blogId",async(req,res)=>{
+  try {
+   const blogComments=await commentModel.find({blogId:req.params.blogId});
+   if (blogComments) {
+     return res.status(200).json(blogComments);
+   } else {
+     return res.status(400).json({message:"Sorry..!!can't find this posts comments"});
+   }
+  } catch (error) {
+   return res.status(400).json({message:error.message});
+  };
+ });
+
+
 // Delete comment from DB
 
 commentRouter.delete("/comment/delete/:commentId",async(req,res)=>{

@@ -12,10 +12,11 @@ authRouter.post('/user/signUp',async(req,res)=>{
     try {
       const{name,email,username,password}=req.body;
       if(email && username && password){
-         const user=await User.findOne({email:email});
-          if(user)return res.status(400).json({message:'User alreadey exist'});
-        //   if(user.username)return res.status(400).json({message:'Username alreadey exist'});
-          if(!user){
+         const userEmail=await User.findOne({email:email});
+         const userUsername=await User.findOne({username:username});
+          if(userEmail)return res.status(400).json({message:'The email used already another account'});
+          if(userUsername)return res.status(400).json({message:'Username is not available'});
+          if(!userEmail && !userUsername){
               bcrypt.hash(password, saltRounds, async (err, hash) => {
                   const addUser=new User({
                       name:name,
@@ -25,7 +26,7 @@ authRouter.post('/user/signUp',async(req,res)=>{
                   });
                   const newUser=await addUser.save();
                   res.status(201).json({
-                      message:'User Created Successfully'
+                      message:'User Registation Successfully'
                   });
               });
           
@@ -34,8 +35,8 @@ authRouter.post('/user/signUp',async(req,res)=>{
           return  res.status(404).json({message:'Please Fill The Form'});
       }
      
-    } catch (error) {
-      return res.status(404).json({message:error.message});
+    } catch{
+        return res.status(500).json({message:'Internal server error'});
     }
   });
   
@@ -43,7 +44,8 @@ authRouter.post('/user/signUp',async(req,res)=>{
   // User LogIn 
   
   authRouter.post('/user/logIn',async(req,res)=>{
-      const{email,password}=req.body;
+   try {
+    const{email,password}=req.body;
     if(email&&password){
         const user=await User.findOne({email:email});
         if(!user){
@@ -79,6 +81,9 @@ authRouter.post('/user/signUp',async(req,res)=>{
     }else{
         return res.status(404).json({message:'Please Enter your mail and password'});
     }
+   } catch (error) {
+    return res.status(500).json({message:'Internal server error'});
+   }
      
   });
 
@@ -89,12 +94,35 @@ authRouter.post('/user/signUp',async(req,res)=>{
         try {
             const {email,username}=req.body;
             const user=await User.findOne({email:email});
-            if(user)return res.status(400).json({message:'User alreadey exist'});
+            const oldUsername=user.username;
+            if(user && oldUsername===username) {
+                    const payload={
+                        username:user.username,
+                        userId:user._id
+                    }
+                    const token= jwt.sign(payload, process.env.JWT_SECRET,  { expiresIn: '7d' });
+            
+                    res.cookie("token",token,{
+                        httpOnly:true,
+                        maxAge:'604800000'
+                    });  
+                    return res.status(200).json({
+                        success:true,
+                        message:'User Logged In Successfully',
+                        username:user.username,
+                        token:token
+                    });
+            }
+
+            if(user && oldUsername!==username){
+                return res.status(400).json({message:'User Already exist'});
+            }
+
             if(!user){
                     const addUser=new User({
                         name:req.body.name,
                         email:email,
-                        // password:req.body.password,
+                        password:'',
                         username:username,
                         profilePic:req.body.profilePic,
                     });
@@ -116,8 +144,9 @@ authRouter.post('/user/signUp',async(req,res)=>{
                         token:token
                 });
            }
+          
         } catch (error) {
-            return res.status(404).json({message:error.message});
+            return res.status(500).json({message:error.message});
         }
     });
 
@@ -150,8 +179,8 @@ authRouter.post('/user/signUp',async(req,res)=>{
          res.status(200).json(user);
      }
      
-    } catch (error) {
-      return res.status(404).json(error); 
+    } catch{
+        return res.status(500).json({message:'Internal server error'});
     }
  });
 

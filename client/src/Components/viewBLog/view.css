@@ -1,0 +1,51 @@
+.blogDetail{
+    margin: 6rem 2rem 2rem 2rem;
+
+}
+
+.blogDetail .detailCont .userInfo{
+    padding: .4rem;
+    margin: 1rem;
+    background-color:rgba(255, 255, 255, 0.253);
+}
+
+.blogDetail .detailCont .userInfo p{
+    font-size: 1.1rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(250, 215, 250);
+    margin-left: .5rem;
+    text-align: left;
+}.blogDetail .detailCont .userInfo p:nth-child(2){
+    font-size: .7rem;
+}
+
+.detailCont .blogImg{
+    width: 70%;
+    height: 35rem;
+    margin: 0 auto;
+    border-radius: .4rem;
+}
+
+.detailCont h1{
+    font-size: 3.4rem;
+    font-weight: 900;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(0, 162, 255);
+    margin: 1rem auto;
+    padding:1rem 0;
+    width: 70%;
+    text-align: left;
+}
+.detailCont {
+    margin-bottom: 2rem;
+}
+.detailCont .dsc{
+    font-size: 1.7rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    width: 70%;
+    color: rgb(0, 255, 191);
+    margin: 0 auto;
+    text-align: justify;
+}

@@ -1,8 +1,6 @@
-.home{
-    padding: 1rem;
-    z-index: -1;
+.catagory{
+    margin: 6rem 2rem 2rem 2rem;
 }
-
 
 .blogUserInfo{
     background-color: rgba(255, 236, 214, 0.767);
@@ -13,7 +11,7 @@
     align-items: center;
 }
 
-.home .blog h2{
+.catagory .blog h2{
     font-size: 1.5rem;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 800;
@@ -21,14 +19,14 @@
     padding: 1rem 0;
 }
 
-.home .blog p{
+.catagory .blog p{
     font-size: 1rem;
     font-family: 'Courier New', Courier, monospace;
     font-weight: lighter;
     text-align: justify;
     padding: 1rem 0;
 }
-.home .blog p .DtLink{
+.catagory .blog p .DtLink{
     font-size: 1rem;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 900;

@@ -4,6 +4,12 @@ const multer=require('multer');
 const path =require('path');
 const commentModel = require('../model/comment.model');
 
+const shuffle = (a) => {
+  for (let i = a.length; i; i--) {
+      let j = Math.floor(Math.random() * i);
+      [a[i - 1], a[j]] = [a[j], a[i - 1]];
+  }
+}
 
 const storage=multer.diskStorage({
   destination:(req,file,cb)=>{
@@ -102,7 +108,8 @@ blogRouter.get("/blog/catagoryWaysBlog/:blogCata",async(req,res)=>{
    const blogCata=req.params.blogCata;
    const catagoriesBlog=await blogModel.find({catagory:blogCata});
    if (catagoriesBlog) {
-     return res.status(200).json(catagoriesBlog);
+    shuffle(catagoriesBlog);
+    return res.status(200).json(catagoriesBlog);
    } else {
      return res.status(400).json({message:"Sorry..!!can't find your blogs"});
    }
@@ -112,12 +119,7 @@ blogRouter.get("/blog/catagoryWaysBlog/:blogCata",async(req,res)=>{
  });
 
 // Get All Blog from Db
-const shuffle = (a) => {
-  for (let i = a.length; i; i--) {
-      let j = Math.floor(Math.random() * i);
-      [a[i - 1], a[j]] = [a[j], a[i - 1]];
-  }
-}
+
 
  blogRouter.get("/blog/allBlogs",async(req,res)=>{
   try {
