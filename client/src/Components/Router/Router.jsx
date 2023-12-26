@@ -10,6 +10,7 @@ import { LogInContext } from '../../App';
 import Login from '../Login/Login';
 import CreateBlog from '../CreateBlog/CreateBlog';
 import Register from '../Register/Registe';
+import Terms from '../TermsCondition/Terms';
 const Router = () => {
   const [loginAuth]=useContext(LogInContext);
 
@@ -20,7 +21,8 @@ const Router = () => {
 
           <Route path='/' element={<Home/>}/>
           <Route path='*' element={<Home/>}/>
-          <Route path='/About' element={<About/>}/>
+          <Route path='/app/about' element={<About/>}/>
+          <Route path='/app/terms&condition' element={<Terms/>}/>
           <Route path='/blog_details/:blogId' element={<ViewB/>}/>
           <Route path='/catagory/:blogCatagory' element={<Catagory/>}/>
 

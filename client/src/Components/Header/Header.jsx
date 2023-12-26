@@ -8,7 +8,8 @@ import { LogInContext } from '../../App';
 const Header = () => {
   const [loginAuth]=useContext(LogInContext);
 
-  const [dropOpen,setDropOpen]=useState(false);
+  const [catDropOpen,setCatDropOpen]=useState(false);
+  const [settingDropOpen,setSettingDropOpen]=useState(false);
 //  console.log(dropOpen);
 
   const handleLogOut=async () => {
@@ -53,27 +54,46 @@ const Header = () => {
                       <li>
                         <div className="catagroyDrop">
                           <button onClick={()=>{
-                            setDropOpen(!dropOpen);
-                          }}>Catagory {dropOpen===true ?<FontAwesomeIcon icon={faClose}/>:'>'} </button>
+                            setCatDropOpen(!catDropOpen);
+                          }}>Catagory {catDropOpen===true ?<FontAwesomeIcon icon={faClose}/>:'>'} </button>
                            {
-                            dropOpen===true?
+                            catDropOpen===true?
                             <>
                              <ul className='flexColCenter dropUL'  style={{listStyle:"none"}}>
                              <a href={'/catagory/love'} className='textDecorNone bgWhite navLink'>
-                               <li>Love Story</li>
-                             </a>
-                             <a href={'/catagory/sad'} className='textDecorNone bgWhite navLink'>
-                               <li>Sad Story</li>
-                             </a>
-                             <a href={'/catagory/broken'} className='textDecorNone bgWhite navLink'>
-                               <li>Broken Story</li>
-                             </a>
-                             <a href={'/catagory/success'} className='textDecorNone bgWhite navLink'>
-                               <li>Success Story</li>
-                             </a>
-                              <a href={'/catagory/thriller'} className='textDecorNone bgWhite navLink'>
-                               <li>Thriller Story</li>
-                              </a>
+                                  <li>Love Story</li>
+                                </a> 
+                                <a href={'/catagory/romantic'} className='textDecorNone bgWhite navLink'>
+                                  <li>Romantic Story</li>
+                                </a>
+                               
+                                <a href={'/catagory/success'} className='textDecorNone bgWhite navLink'>
+                                  <li>Success Story</li>
+                                </a>
+                                  <a href={'/catagory/thriller'} className='textDecorNone bgWhite navLink'>
+                                  <li>Thriller Story</li>
+                                  </a>
+                                  <a href={'/catagory/sad'} className='textDecorNone bgWhite navLink'>
+                                  <li>Sad Story</li>
+                                </a>
+                                <a href={'/catagory/broken'} className='textDecorNone bgWhite navLink'>
+                                  <li>Broken Story</li>
+                                </a> 
+                                <a href={'/catagory/education'} className='textDecorNone bgWhite navLink'>
+                                  <li>Education</li>
+                                </a>
+                                <a href={'/catagory/programming'} className='textDecorNone bgWhite navLink'>
+                                  <li>Programming</li>
+                                </a> 
+                                <a href={'/catagory/health'} className='textDecorNone bgWhite navLink'>
+                                  <li>Health</li>
+                                </a>
+                                <a href={'/catagory/games'} className='textDecorNone bgWhite navLink'>
+                                  <li>Games</li>
+                                </a>
+                                <a href={'/catagory/natural'} className='textDecorNone bgWhite navLink'>
+                                  <li>Natural</li>
+                                </a>
                             </ul>
                             </>:''
                            }
@@ -85,9 +105,29 @@ const Header = () => {
                     <Link to={'/Profile'} className='textDecorNone bgWhite navLink'>
                       <li className="navList mg1 fontSm colorBlack fontBold1">Profile</li>
                     </Link>
-                    <Link to={'/About'} className='textDecorNone bgWhite navLink'>
-                      <li className="navList mg1 fontSm colorBlack fontBold1">AboutUs</li>
-                    </Link>
+                      <li>
+                      <div className="SettingDrop">
+                          <button onClick={()=>{
+                            setSettingDropOpen(!settingDropOpen);
+                          }}>Setting {settingDropOpen===true ?<FontAwesomeIcon icon={faClose}/>:'>'} </button>
+                           {
+                            settingDropOpen===true?
+                            <>
+                             <ul className='flexColCenter dropUL'  style={{listStyle:"none"}}>
+                                <a href={'/setting/account'} className='textDecorNone bgWhite navLink'>
+                                  <li>Account</li>
+                                </a>
+                                <a href={'/app/terms&condition'} className='textDecorNone bgWhite navLink'>
+                                  <li>Trems</li>
+                                </a>
+                                <a href={'/app/about'} className='textDecorNone bgWhite navLink'>
+                                  <li>About Us</li>
+                                </a>
+                            </ul>
+                            </>:''
+                           }
+                        </div>
+                      </li>
               </ul>
               <div className="logOut">
                 

@@ -47,7 +47,7 @@ function BlogDetails() {
               </>
             } 
             
-            <Comment blogId={blogId}/>
+            {/* <Comment blogId={blogId}/> */}
         </div>
     );
 };

@@ -31,7 +31,15 @@ const provider = new GoogleAuthProvider();
                     // password:password,
                 })
             })
-            .then((res)=>res.json())
+            .then((res)=>{
+                res.json();
+                if (res.status ===400) {
+                    window.location.href='/login';
+                };
+                if (res.status===200) {
+                    window.location.href='/';
+                };
+            })
             .then((res)=>{
                 // console.log(res.statusCode)
                 if(res){
