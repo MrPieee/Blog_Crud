@@ -1,28 +1,28 @@
-.profile{
+.sUser{
     margin: 6rem 2rem 2rem 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.profileInfo img{
+.sUserInfo img{
     width: 15rem;
 }
-.profileInfo h3,h4{
+.sUserInfo h3,h4{
     margin: 1rem;
     font-family: 'Courier New', Courier, monospace;
 }
-.profileInfo hr{
+.sUserInfo hr{
     width: 25rem;
     color: cornflowerblue;
 }
 
-.userBlogs .blogsHed{
+.sUser .userBlogs .blogsHed{
     width: 27rem;
 }
-.userBlogs .blogsHed h3{
+.sUser .userBlogs .blogsHed h3{
     text-align: left;
-    width: 12rem;
+    width: 18rem;
     margin: 1rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1.7rem;
@@ -31,28 +31,19 @@
 }
 
 
-.profile .userBlogs .blogUserInfo{
-    background-color: rgba(3, 196, 255, 0.747);
+.blogUserInfo{
+    background-color: rgba(255, 236, 214, 0.767);
     border-radius: 2rem;
     padding: .3rem;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
 }
-.blog .blogControll button {
-    border: none;
-    background: none;
-    outline: none;
-    font-size: 1.5rem;
-    margin: 0 .5rem;
-    color: aliceblue;
-    cursor: pointer;
-}
-.userBlogs .blog{
+
+.sUser .userBlogs .blog{
     width: 60%;
 }
-.userBlogs .blog h2{
+.sUser .userBlogs .blog h2{
     font-size: 1.5rem;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 800;
@@ -60,14 +51,14 @@
     padding: 1rem 0;
 }
 
-.userBlogs .blog p{
+.sUser .userBlogs .blog p{
     font-size: 1rem;
     font-family: 'Courier New', Courier, monospace;
     font-weight: lighter;
     text-align: justify;
     padding: 1rem 0;
 }
-.userBlogs .blog p .DtLink{
+.sUser .userBlogs .blog p .DtLink{
     font-size: 1rem;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 900;
@@ -77,17 +68,17 @@
 
 
 @media screen and (max-width:850px) {
-    .profileInfo img{
+    .sUserInfo img{
         width: 10rem;
     }
-    .userBlogs .blog{
+    .sUser .userBlogs .blog{
         width: 70%;
     }
 }
 
 @media screen and (max-width:600px) {
 
-    .userBlogs .blogsHed{
+    .sUser .userBlogs .blogsHed{
         width: 20rem;
     }
 
@@ -99,22 +90,22 @@
     .blogUserInfo img{
         width: 2rem;
     }
-    .userBlogs .blog{
+    .sUser .userBlogs .blog{
         width: 80%;
     }
-    .userBlogs .blog img:nth-child(2){
+    .sUser .userBlogs .blog img:nth-child(2){
         width: 80%;
         height: 10rem;
         margin: .3rem;
     }
-    .userBlogs .blog h2{
+    .sUser .userBlogs .blog h2{
         font-size: 1.3rem;
     }
 
-    .userBlogs .blog p{
+    .sUser .userBlogs .blog p{
         font-size: .9rem;
     }
-    .userBlogs .blog p .DtLink{
+    .sUser .userBlogs .blog p .DtLink{
         font-size: .9rem;
     }
 
@@ -122,23 +113,23 @@
 
 @media screen and (max-width:440px) {
 
-    .profileInfo img{
+    .sUserInfo img{
         width: 7rem;
     }
-    .userBlogs .blogsHed{
+    .sUser .userBlogs .blogsHed{
         width: 20rem;
     }
-    .userBlogs .blog{
+    .sUser .userBlogs .blog{
         width: 90%;
     }
-    .userBlogs .blog h2{
+    .sUser .userBlogs .blog h2{
         font-size: 1rem;
     }
 
-    .userBlogs .blog p{
+    .sUser .userBlogs .blog p{
         font-size: .8rem;
     }
-    .userBlogs .blog p .DtLink{
+    .sUser .userBlogs .blog p .DtLink{
         font-size: .8rem;
     }
 

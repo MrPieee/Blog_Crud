@@ -12,7 +12,7 @@ commentRouter.post('/comment/commentPost',async(req,res)=>{
         comment:req.body.comment,
     });
     await newcomment.save();
-    return res.status(200).json({message:"Your comment is successsfully Added"});
+    return res.status(200).json({message:"Your comment is successsfully Added",comment:newcomment});
   } catch (error) {
     return res.status(400).json({message:error.message});
   }
@@ -39,9 +39,9 @@ commentRouter.post('/comment/commentPost',async(req,res)=>{
   try {
    const blogComments=await commentModel.find({blogId:req.params.blogId});
    if (blogComments) {
-     return res.status(200).json(blogComments);
+     return res.status(200).json(blogComments.reverse());
    } else {
-     return res.status(400).json({message:"Sorry..!!can't find this posts comments"});
+     return res.status(400).json({message:"Sorry..!!can't find this blog comments"});
    }
   } catch (error) {
    return res.status(400).json({message:error.message});

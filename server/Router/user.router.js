@@ -3,6 +3,7 @@ const userRouter=require('express').Router();
 const bcrypt=require('bcrypt');
 const saltRounds = 10;
 const User = require('../model/admin.model');
+const blogModel = require('../model/blog.model');
 
 // Sigle User Get From Db with username
 userRouter.get('/users',async(req,res)=>{
@@ -114,11 +115,11 @@ userRouter.delete('/user/delete/:id',async(req,res)=>{
     try {
         const id=req.params.id;
         const deleteUser= await User.deleteOne({_id:id});
-        // const deleteUserPost=await postModel.deleteMany({user:id});
-        if (deleteUser) {
+        const deleteUserBlog=await blogModel.deleteMany({user:id});
+        if (deleteUser && deleteUserBlog ) {
             return res.clearCookie('token').status(203).json({message:"Your account has been delete"});
         } else {
-            return res.status(404).json({message:`User Could not find`});
+            return res.status(404).json({message:`Dont Delete Your Account`});
         }
     } catch (error) {
         return res.status(404).json({message:error.message});    

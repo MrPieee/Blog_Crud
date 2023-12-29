@@ -11,6 +11,9 @@ import Login from '../Login/Login';
 import CreateBlog from '../CreateBlog/CreateBlog';
 import Register from '../Register/Registe';
 import Terms from '../TermsCondition/Terms';
+import SingleUser from '../singleUser/singleUser';
+import Edit from '../EditBlog/Edit';
+import E404 from '../Error/E404';
 const Router = () => {
   const [loginAuth]=useContext(LogInContext);
 
@@ -20,7 +23,7 @@ const Router = () => {
         <Routes>
 
           <Route path='/' element={<Home/>}/>
-          <Route path='*' element={<Home/>}/>
+          <Route path='*' element={<E404/>}/>
           <Route path='/app/about' element={<About/>}/>
           <Route path='/app/terms&condition' element={<Terms/>}/>
           <Route path='/blog_details/:blogId' element={<ViewB/>}/>
@@ -37,7 +40,9 @@ const Router = () => {
 
           <Route path='/*' element={<PrivateRoute/>}>
             <Route path='Profile' element={<Profile/>}/>
+            <Route path='user/:sUsername' element={<SingleUser/>}/>
             <Route path='create-and-post-a-blog' element={<CreateBlog/>}/>
+            <Route path='blog/:blogId/eidt-your-blog' element={<Edit/>}/>
           </Route>
        </Routes>        
     </div>

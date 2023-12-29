@@ -1,0 +1,147 @@
+.error{
+    margin: 6rem 1rem 1rem 1rem;
+    padding: 2rem;
+}
+
+.errCont{
+    background-image: url('./sahara.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 30rem;
+    padding: 2rem ;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+}
+
+.emoji{
+    background-image: url('./emoji.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 20rem;
+    height: 15rem;
+    margin: 1rem;
+}
+.e404{
+    background-image: url('./404.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 20rem;
+    margin: 1rem;
+    height: 22rem;
+}
+
+.EserchFrom input{
+    width: 30rem;
+    height: 4rem;
+    border: none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.822);
+    border-radius: 2rem 0 0 2rem;
+    padding: .2rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(70, 0, 43);
+}
+.EserchFrom button{
+    width: 7rem;
+    height: 4rem;
+    border: none;
+    outline: none;
+    background-color: rgba(121, 11, 155, 0.822);
+    border-radius: 0 2rem  2rem  0;
+    padding: .2rem 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(255, 255, 255);
+}
+
+#goHome{
+    border: none;
+    outline: none;
+    background-color: rgb(69, 107, 8);
+    border-radius: 2rem;
+    padding: .2rem 1rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(255, 230, 0);
+}#goHome:hover{
+    background-color: rgb(255, 230, 0);
+    color: rgb(69, 107, 8);
+}
+
+@media screen and (max-width:900px) {
+    .errCont{
+        width: 100%;
+        height: 20rem;
+    }
+    
+    .emoji{
+        width: 13rem;
+        height: 10rem;
+    }
+    .e404{
+        width: 13rem;
+        height: 14rem;
+        
+    }
+    .EserchFrom input{
+        width: 25rem;
+        height: 3.5rem;
+    }
+    .EserchFrom button{
+        width: 6rem;
+        height: 3.5rem;
+    }
+
+}
+
+@media screen and (max-width:600px) {
+    .error{
+        padding: 1rem;
+    }.errCont{
+        width: 100%;
+        height: 15rem;
+    }.emoji{
+        width: 7rem;
+        height: 5rem;
+    }.e404{
+        width: 9rem;
+        height: 10rem;
+    }
+    .EserchFrom input{
+        width: 20rem;
+        height: 3rem;
+        font-size: 1rem;
+    }
+    .EserchFrom button{
+        width: 6rem;
+        height: 3rem;
+        font-size: 1.1rem;
+    }
+}
+@media screen and (max-width:450px) {
+    .error{
+        padding: 0rem;
+    }
+     .emoji{
+        width: 5rem;
+        height: 4rem;
+    }.e404{
+        width: 7rem;
+        height: 8rem;
+    }
+    .EserchFrom input{
+        width: 16rem;
+        font-size: .8rem;
+    }
+    .EserchFrom button{
+        font-size: 1rem;
+    }
+}

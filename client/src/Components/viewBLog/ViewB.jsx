@@ -40,14 +40,15 @@ function BlogDetails() {
                       <p>{catagory.toLocaleUpperCase()} Story</p>
                     </div>
                   </div>
-                  <img src={userPp} alt="blogpicture" className='blogImg' />
+                  <img src={`/blogImages/${photo}`} alt="blogpicture" className='blogImg' />
                   <h1> {title}</h1>
                   <p className='dsc'>{dsc}</p>
                 </div><hr />
+
+                  <Comment blogId={blogId} blogUsername={username}/>
               </>
             } 
             
-            {/* <Comment blogId={blogId}/> */}
         </div>
     );
 };

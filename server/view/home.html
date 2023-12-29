@@ -4,10 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Server</title>
+
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 97vh;
+        }
+            .div{
+                width: 100%;
+                height: 97vh;
+                animation: divAnim infinite  .1s ;
+                animation-direction: alternate-reverse;
+                background-color: aliceblue;
+                border-radius: 50%;
+            }
+
+            @keyframes divAnim {
+                0%{
+                    width: 100%;
+                    height: 97vh;
+                    background-color: #eb035c;
+                }
+                10%{
+                    width: 80%;
+                    height: 77vh;
+                    background-color: #ff80ed;
+                }
+                20%{
+                    width: 60%;
+                    height: 57vh;
+                    background-color: #ffd700;
+                }
+                30%{
+                    width: 40%;
+                    height: 37vh;
+                    background-color: #ffa500;
+                }
+                40%{
+                    width: 20%;
+                    height: 17vh;
+                    background-color: #065535;
+                }
+                50%{
+                    width: 10%;
+                    height: 7vh;
+                    background-color: #133337;
+                }
+                60%{
+                    width: 20%;
+                    height: 17vh;
+                    background-color: #0000ff;
+                }
+                70%{
+                    width: 40%;
+                    height: 37vh;
+                    background-color: #003366;
+                }
+                80%{
+                    width: 60%;
+                    height: 57vh;
+                    background-color: #008080;
+                }
+                90%{
+                    width: 80%;
+                    height: 77vh;
+                background-color: #800080;
+                }
+                100%{
+                    width: 90%;
+                    height: 87vh;
+                    background-color: #20b2aa;
+                }
+            }
+    </style>
 </head>
 <body>
-     <h1> Hi , There Welcome To Our Blog Server</h1>
-     <img style="width: 10rem;height: 10rem; border-radius: 50%; background-color: yellow;" src="https://i.postimg.cc/xCHs0vfR/user2.jpg" alt="profile">
+     <!-- <h1> Hi , There Welcome To Our Blog Server</h1>
+     <img style="width: 10rem;height: 10rem; border-radius: 50%; background-color: yellow;" src="https://i.postimg.cc/xCHs0vfR/user2.jpg" alt="profile"> -->
+     <div class="div"></div>
      <!-- <form action="/api/imageUp" method="post" enctype="multipart/form-data">
         <input type="file" name="blogPhoto" id="">
         <button type="submit">Post</button>

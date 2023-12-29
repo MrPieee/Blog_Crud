@@ -5,3 +5,135 @@
 .comntCont{
     padding: 2rem 4rem;
 }
+
+#comment{
+    width: 55rem;
+    height: 5rem;
+    padding: .2rem .5rem;
+    font-size: 1.4rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+    background-color: aliceblue;
+    border: 2px solid rgb(255, 208, 0);
+    resize: none;
+    outline: none;
+}
+.comntCont form button{
+    width: 6rem;
+    height: 5rem;
+    padding: .2rem .5rem;
+    font-size: 1.6rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: black;
+    background-color: rgb(1, 136, 255);
+    border: 2px solid rgb(255, 208, 0);
+    font-weight: 900;
+    resize: none;
+    outline: none;
+}
+.comntCont form button:hover{
+    color: rgb(1, 136, 255);
+    background-color: black;
+}
+
+.commentShow{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: #0000005e;
+    border-radius: 1rem;
+    border: 2px solid blueviolet;
+}
+
+.commentShow button{
+    cursor: pointer;
+}
+
+.newCmnt{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    padding: .2rem .5rem;
+    margin: .2rem;
+    border-left: 3px solid rgb(228, 253, 0);
+}
+.newCmnt img{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: 3px solid rgba(0, 255, 255, 0.438);
+    margin: 0 1rem;
+}
+
+.newCmnt p{
+    font-size: 1.1rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(255, 189, 255);
+}
+
+.blogComments{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    padding: .2rem .5rem;
+    border-left: 3px solid rgb(228, 253, 0);
+    margin: .2rem 0;
+}
+
+.blogComments img{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: 3px solid rgba(0, 255, 255, 0.438);
+    margin: 0 1rem;
+}
+
+.blogComments p{
+    font-size: 1.1rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(255, 189, 255);
+}
+
+
+@media screen and (max-width:780px) {
+    .comment{
+        padding: .4rem 1.2rem;
+    }
+    .comntCont{
+        padding: 1rem 1.5rem;
+    }
+    #comment{
+        width: 35rem;
+        height: 4rem;
+        font-size: 1.2rem;
+    }
+    .comntCont form button{
+        width: 6rem;
+        height: 4rem;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .comment{
+        padding: 0;
+    }
+    .comntCont{
+        padding: 0;
+    }
+    #comment{
+        width: 20rem;
+        height: 3rem;
+        font-size: .8rem;
+    }
+    .comntCont form button{
+        width: 5rem;
+        height: 3rem;
+        font-size: 1.2rem;
+    }
+}
+
+

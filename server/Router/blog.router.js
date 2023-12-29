@@ -13,7 +13,7 @@ const shuffle = (a) => {
 
 const storage=multer.diskStorage({
   destination:(req,file,cb)=>{
-      cb(null,'./blogImages');
+      cb(null,'./public/blogImages');
   },
   filename:(req,file,cb)=>{
       const fileExt=path.extname(file.originalname);
@@ -58,7 +58,7 @@ blogRouter.post('/blog/blogPost',upload.single('blogPhoto'),async(req,res)=>{
             userPp:req.body.userProfile,
         });
         await newblog.save();
-        return res.status(200).json({message:"Your blog is successsfully posted"});
+        return res.status(200).json({message:"Your blog is successsfully posted",id:newblog._id});
        } else {
         return res.status(400).json({message:"Please title and dsc has add the post "});
        }
@@ -140,7 +140,7 @@ blogRouter.get("/blog/catagoryWaysBlog/:blogCata",async(req,res)=>{
 
 //  Update Blog from DB
 
-blogRouter.patch("/blog/update/:blogId",upload.single('blogPhoto'),async(req,res)=>{
+blogRouter.put("/blog/updateI/:blogId",upload.single('blogPhoto'),async(req,res)=>{
   try {
     const blogId=req.params.blogId;
     const updateblog=await blogModel.updateOne({_id:blogId},{$set:{
@@ -160,7 +160,24 @@ blogRouter.patch("/blog/update/:blogId",upload.single('blogPhoto'),async(req,res
 
 });
 
+blogRouter.put("/blog/updateO/:blogId",async(req,res)=>{
+  try {
+    const blogId=req.params.blogId;
+    const updateblog=await blogModel.updateOne({_id:blogId},{$set:{
+            title:req.body.title,
+            dsc:req.body.dsc,
+            catagory:req.body.catagory,
+    }});
+    if(updateblog){
+      return res.status(200).json({message:"Your blog has been updated"});
+    }else{
+    return res.status(400).json({message:`Sorry..!! Your blog hasn't updated`});
+    }
+  } catch (error) {
+    return res.status(400).json({message:error.message});
+  };
 
+});
 
 // Delete blog from DB
 

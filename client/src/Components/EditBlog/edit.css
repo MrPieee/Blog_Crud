@@ -1,4 +1,4 @@
-.createBlog{
+.edit{
     display: flex;
     margin-top: 6rem;
     flex-direction: column;
@@ -10,7 +10,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(5, 85, 29, 0.452);
+    background-color: rgba(5, 85, 29, 0.329);
     border-radius: 1rem;
     width: 70%;
     padding: 2rem 3rem;

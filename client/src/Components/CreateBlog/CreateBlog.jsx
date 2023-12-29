@@ -61,6 +61,7 @@ function CreateBlog() {
         .then((res)=>{
           if (res) {
             alert(res.message);
+            window.location.href=`/blog_details/${res.id}`
           };
         }).catch((err)=>{
           alert(err.message);
