@@ -1,0 +1,119 @@
+
+.editForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.editForm .profileImg{
+    width: 16rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.editForm .profileImg img{
+    width: 14rem;
+    height: 14rem;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid aqua;
+}
+
+.editForm .profileImgInp{
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    top: 13rem;
+    transform: scale(14);
+    opacity: 0.00001;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+#updateBtn{
+    width: 20rem;
+    text-align: center;
+    font-size: 1.4rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 900;
+    background-color: rgb(0, 178, 248);
+    color: rgb(0, 0, 0);
+    border-radius: 2rem;
+    border: none;
+    padding: .5rem;
+    margin: 1rem;
+    cursor: pointer;
+}
+.editForm .name{
+    display: flex;
+    flex-direction: column;
+}
+.editForm .name input{
+    width: 35rem;
+    height: 4rem;
+    resize: none;
+    font-size: 1.2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    color: black;
+    background-color: aliceblue;
+    border: none;
+    outline: none;
+    border-radius: .3rem;
+    padding: .2rem .6rem;
+    margin: .4rem;
+}
+.editForm .name input:focus{
+    box-shadow: 0 1px .5rem 1px  rgb(0, 204, 255);
+}
+
+
+@media screen and (max-width:850px) {
+ 
+    .editForm .profileImg img{
+        width: 10rem;
+        height: 10rem;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid aqua;
+    }
+    
+    .editForm .profileImgInp{
+        top: 11rem;
+        transform: scale(10);
+        /* opacity: .0001; */
+    }
+    
+    #updateBtn{
+        width:15rem;
+    }
+    .editForm .name input{
+        width: 25rem;
+        height: 4rem;
+    }
+}
+
+
+@media screen and (max-width:630px) {
+    .editForm .profileImg img{
+        width: 8rem;
+        height: 8rem;
+    }
+    .editForm .profileImgInp{
+        top: 12rem;
+        transform: scale(8);
+        /* opacity: .0001; */
+    }
+    .editForm .name input{
+        width: 20rem;
+        height: 3rem;
+        font-size: 1.1rem;
+        padding: .2rem .6rem;
+    }
+}

@@ -11,7 +11,7 @@ const Login = () => {
         email:'',
         password:''
       });
-
+      const [error,setError]=useState('');
       const handleInputValue=(e)=>{
         setUserInp({
             ...userInp,
@@ -42,7 +42,9 @@ const Login = () => {
             .catch((error)=>{
                 alert(error.message);
             });
-         };
+         }else{
+            setError('Please Enter Your Eamil and password');
+         }
       };
      
       const handleGoogleLogIn=()=>{
@@ -59,7 +61,7 @@ const Login = () => {
                         
 
                         <input onChange={handleInputValue} required type="password" name="password"  onMouseUp={(e)=>e.target.type="text"} onMouseOut={(e)=>e.target.type="password"} placeholder='Give your password'/>
-
+                        <p className=' colorDanger abs'>{error?error:''}</p>
                         <button  onClick={handleLogIn} type="submit">Log In</button>
 
                         <p>Don't have any account / <Link to={'/register'}>Register</Link> </p>

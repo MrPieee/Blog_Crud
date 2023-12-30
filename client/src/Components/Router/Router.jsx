@@ -14,6 +14,10 @@ import Terms from '../TermsCondition/Terms';
 import SingleUser from '../singleUser/singleUser';
 import Edit from '../EditBlog/Edit';
 import E404 from '../Error/E404';
+import Setting from '../Setting/Setting';
+import EditProfile from '../Setting/editP/EditProfile';
+import Security from '../Setting/Security/Security';
+import { Controll } from '../Setting/Controller/Controller';
 const Router = () => {
   const [loginAuth]=useContext(LogInContext);
 
@@ -40,6 +44,12 @@ const Router = () => {
 
           <Route path='/*' element={<PrivateRoute/>}>
             <Route path='Profile' element={<Profile/>}/>
+            <Route path='setting/account/*' element={<Setting/>}>
+                 <Route path='' element={<EditProfile/>}/>
+                 <Route path='editProfile' element={<EditProfile/>}/>
+                 <Route path='Security' element={<Security/>}/>
+                 <Route path='Controll' element={<Controll/>}/>
+            </Route>
             <Route path='user/:sUsername' element={<SingleUser/>}/>
             <Route path='create-and-post-a-blog' element={<CreateBlog/>}/>
             <Route path='blog/:blogId/eidt-your-blog' element={<Edit/>}/>

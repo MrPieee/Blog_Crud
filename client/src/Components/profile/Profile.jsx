@@ -70,7 +70,7 @@ const Profile = () => {
           :
           <>
             <div className="profileInfo flexColCenter">
-                <img src={profilePic} alt="profile" />
+                <img src={profilePic==='https://i.postimg.cc/xCHs0vfR/user2.jpg'?profilePic:`/userProfile/${profilePic}`} alt="profile" />
                 <div className=" flexRowAiCenter">
                   <h3>{name}</h3>
                   <h4>@{username}</h4>
@@ -88,7 +88,7 @@ const Profile = () => {
                             <div className="blogUserInfo">
                               <Link to={'/Profile'} className=' textDecorNone colorBlack'> 
                                 <div className=" flexRowAiCenter">
-                                  <img src={userPp} alt="userprofile" className=' width1 borderRad2 mgRHalf'/>
+                                  <img src={userPp.slice(0,5)==='https'?userPp:`/userProfile/${userPp}`} alt="userprofile" className=' width1 borderRad2 mgRHalf'/>
                                   <p className=' fontSm fontItalic fontBold1 fontCourier'>{username}</p>
                                 </div>
                               </Link>

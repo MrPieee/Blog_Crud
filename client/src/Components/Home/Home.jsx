@@ -77,7 +77,7 @@ const Home = () => {
                           <div className="blogUserInfo">
                             <Link to={pUser.username===username?'/Profile':`/user/${username}`} className=' textDecorNone colorBlack'> 
                               <div className=" flexRowAiCenter">
-                                <img src={userPp} alt="userprofile" className=' width1 borderRad2 mgRHalf'/>
+                                <img src={userPp==='https://i.postimg.cc/xCHs0vfR/user2.jpg'?userPp:`/userProfile/${userPp}`} alt="userprofile" className=' width1 borderRad2 mgRHalf'/>
                                 <p className=' fontSm fontItalic fontBold1 fontCourier'>{username}</p>
                               </div>
                             </Link>

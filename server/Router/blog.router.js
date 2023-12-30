@@ -204,6 +204,21 @@ blogRouter.delete("/blog/delete/:blogId",async(req,res)=>{
 
 });
 
+blogRouter.delete("/blog/deleteAll/:username",async(req,res)=>{
+  try {
+    const username=req.params.username;
+      const deleteblog=await blogModel.deleteMany({username:username});
+      // const deleteBlogComments=await commentModel.deleteMany({blogId:blogId});
+
+      if(deleteblog){
+        return res.status(200).json({message:"Your blog has been deleted"});
+      }
+
+  } catch (error) {
+    return res.status(404).json({message:error.message});
+  };
+
+});
 
 
 

@@ -89,6 +89,7 @@ function CreateBlog() {
                       <option value="broken">Broken</option>
                       <option value="education">Education</option>
                       <option value="programming">Programming</option>
+                      <option value="thriller">Thriller</option>
                       <option value="health">Health</option>
                       <option value="games">Games</option>
                       <option value="natural">Natural</option>

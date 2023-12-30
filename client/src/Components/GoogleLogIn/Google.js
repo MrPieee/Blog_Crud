@@ -15,7 +15,6 @@ const provider = new GoogleAuthProvider();
         const user = result.user;
         const email=user.email;
         const name=user.displayName;
-        const profilePic=user.photoURL;
         const username=user.email.split(['@'])[0];
 
         await fetch('/api/user/googleLogin',{
@@ -27,22 +26,13 @@ const provider = new GoogleAuthProvider();
                     name:name,
                     email:email,
                     username:username,
-                    profilePic:profilePic,
                     // password:password,
                 })
             })
-            .then((res)=>{
-                res.json();
-                if (res.status ===400) {
-                    window.location.href='/login';
-                };
-                if (res.status===200) {
-                    window.location.href='/';
-                };
-            })
+            .then((res)=>res.json())
             .then((res)=>{
                 // console.log(res.statusCode)
-                if(res){
+                if(res.success===true){
                     alert(res.message);
                     window.location.href='/';
                 }

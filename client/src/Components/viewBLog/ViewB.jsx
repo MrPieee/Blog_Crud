@@ -34,7 +34,7 @@ function BlogDetails() {
               <>
                 <div className='detailCont flexCol textCenter'>
                   <div className="userInfo flexRowAiCenter">
-                    <img src={userPp} alt="userProfile" className=' width1s' />
+                    <img src={userPp==='https://i.postimg.cc/xCHs0vfR/user2.jpg'?userPp:`/userProfile/${userPp}`} alt="userProfile" className=' width1s' />
                     <div className=' mgRHalf'>
                       <p>Posted by {username}</p>
                       <p>{catagory.toLocaleUpperCase()} Story</p>

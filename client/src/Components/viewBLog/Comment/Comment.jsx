@@ -128,7 +128,7 @@ function Comment(props) {
                     newComment
                     ?<div className="newCmnt">
                         <div className=" flexRowAiCenter">
-                        <img src={newComment.userPp} alt="userProfile" />
+                        <img src={newComment.userPp.slice(0,5)==='https'?newComment.userPp:`/userProfile/${newComment.userPp}`} alt="userProfile" />
                         <p>{newComment.comment}</p>
                         </div>
                         <div className="tras">
@@ -142,7 +142,7 @@ function Comment(props) {
                         return(
                          <div className='blogComments' key={_id}>
                              <div className=" flexRowAiCenter">
-                                <img src={userPp} alt="userProfile" />
+                                <img src={userPp.slice(0,5)==='https'?userPp:`/userProfile/${userPp}`} alt="userProfile" />
                                 <p>{comment}</p>
                              </div>
                             {

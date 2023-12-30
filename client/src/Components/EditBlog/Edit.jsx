@@ -24,7 +24,7 @@ function Edit() {
             setTittleInp(res.title);
             setDscInp(res.dsc);
             setCatagroy(res.catagory);
-            setOldImage(res.userPp);
+            setOldImage(res.photo);
             setIsloadding(false);
           }
         }).catch((err)=>alert(err.message));
@@ -124,6 +124,7 @@ function Edit() {
                             <option value="broken">Broken</option>
                             <option value="education">Education</option>
                             <option value="programming">Programming</option>
+                            <option value="thriller">Thriller</option>
                             <option value="health">Health</option>
                             <option value="games">Games</option>
                             <option value="natural">Natural</option>
@@ -132,7 +133,7 @@ function Edit() {
         
                         
                             <div className='img'>
-                                <img src={oldImage ? oldImage:image} alt="rioj"/>
+                                <img src={ oldImage?`/blogImages/${oldImage}` :image} alt="rioj"/>
                                 <input required type="file" id='imgInp' name='blogPhoto' onChange={handleImageChange} accept="image/*" />
                             </div>
                         

@@ -60,40 +60,40 @@ const Header = () => {
                             catDropOpen===true?
                             <>
                              <ul className='flexColCenter dropUL'  style={{listStyle:"none"}}>
-                             <a href={'/catagory/love'} className='textDecorNone bgWhite navLink'>
+                             <Link to={'/catagory/love'} className='textDecorNone bgWhite navLink'>
                                   <li>Love Story</li>
-                                </a> 
-                                <a href={'/catagory/romantic'} className='textDecorNone bgWhite navLink'>
+                                </Link> 
+                                <Link to={'/catagory/romantic'} className='textDecorNone bgWhite navLink'>
                                   <li>Romantic Story</li>
-                                </a>
+                                </Link>
                                
-                                <a href={'/catagory/success'} className='textDecorNone bgWhite navLink'>
+                                <Link to={'/catagory/success'} className='textDecorNone bgWhite navLink'>
                                   <li>Success Story</li>
-                                </a>
-                                  <a href={'/catagory/thriller'} className='textDecorNone bgWhite navLink'>
+                                </Link>
+                                  <Link to={'/catagory/thriller'} className='textDecorNone bgWhite navLink'>
                                   <li>Thriller Story</li>
-                                  </a>
-                                  <a href={'/catagory/sad'} className='textDecorNone bgWhite navLink'>
+                                  </Link>
+                                  <Link to={'/catagory/sad'} className='textDecorNone bgWhite navLink'>
                                   <li>Sad Story</li>
-                                </a>
-                                <a href={'/catagory/broken'} className='textDecorNone bgWhite navLink'>
+                                </Link>
+                                <Link to={'/catagory/broken'} className='textDecorNone bgWhite navLink'>
                                   <li>Broken Story</li>
-                                </a> 
-                                <a href={'/catagory/education'} className='textDecorNone bgWhite navLink'>
+                                </Link> 
+                                <Link to={'/catagory/education'} className='textDecorNone bgWhite navLink'>
                                   <li>Education</li>
-                                </a>
-                                <a href={'/catagory/programming'} className='textDecorNone bgWhite navLink'>
+                                </Link>
+                                <Link to={'/catagory/programming'} className='textDecorNone bgWhite navLink'>
                                   <li>Programming</li>
-                                </a> 
-                                <a href={'/catagory/health'} className='textDecorNone bgWhite navLink'>
+                                </Link> 
+                                <Link to={'/catagory/health'} className='textDecorNone bgWhite navLink'>
                                   <li>Health</li>
-                                </a>
-                                <a href={'/catagory/games'} className='textDecorNone bgWhite navLink'>
+                                </Link>
+                                <Link to={'/catagory/games'} className='textDecorNone bgWhite navLink'>
                                   <li>Games</li>
-                                </a>
-                                <a href={'/catagory/natural'} className='textDecorNone bgWhite navLink'>
+                                </Link>
+                                <Link to={'/catagory/natural'} className='textDecorNone bgWhite navLink'>
                                   <li>Natural</li>
-                                </a>
+                                </Link>
                             </ul>
                             </>:''
                            }
@@ -114,15 +114,22 @@ const Header = () => {
                             settingDropOpen===true?
                             <>
                              <ul className='flexColCenter dropUL'  style={{listStyle:"none"}}>
-                                <a href={'/setting/account'} className='textDecorNone bgWhite navLink'>
+                                <Link to={'/setting/account'} className='textDecorNone bgWhite navLink'>
                                   <li>Account</li>
-                                </a>
-                                <a href={'/app/terms&condition'} className='textDecorNone bgWhite navLink'>
+                                </Link>
+                                <Link to={'/app/terms&condition'} className='textDecorNone bgWhite navLink'>
                                   <li>Trems</li>
-                                </a>
-                                <a href={'/app/about'} className='textDecorNone bgWhite navLink'>
+                                </Link>
+                                <Link to={'/app/about'} className='textDecorNone bgWhite navLink'>
                                   <li>About Us</li>
-                                </a>
+                                </Link>
+                                <li>
+                                {
+                                    loginAuth
+                                    ?<button onClick={handleLogOut} id='logBtn'>LogOut</button>
+                                    :<Link to={'/login'}><button id='logBtn'>LogIn</button></Link>
+                                  }
+                                </li>
                             </ul>
                             </>:''
                            }
@@ -132,9 +139,9 @@ const Header = () => {
               <div className="logOut">
                 
                 {
-                  loginAuth
-                  ?<button onClick={handleLogOut} id='logBtn'>LogOut</button>
-                  :<Link to={'/login'}><button id='logBtn'>LogIn</button></Link>
+                  loginAuth===false
+                  ?<Link to={'/login'}><button id='logBtn'>LogIn</button></Link>
+                  :''
                 }
               </div>
             </nav>

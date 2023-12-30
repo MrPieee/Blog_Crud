@@ -1,0 +1,22 @@
+.controll{
+    padding: 1rem;
+
+}
+
+.controllNav nav{
+    align-items: start;
+}
+.controllNav nav button{
+    cursor: pointer;
+    width: 22rem;
+    font-size: 1.1rem;
+    color: black;
+    background-color: turquoise;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    padding: .2rem .4rem;
+    margin: .2rem;
+    border: none;
+    outline: none;
+
+}

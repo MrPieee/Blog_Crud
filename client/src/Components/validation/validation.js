@@ -30,3 +30,16 @@ export const Validation=(value)=>{
 
     return errors;
 };
+
+
+
+export const usernameValid=(value)=>{
+    const errors={};
+    const username_pattern=/\b^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{4,20}$\b/;
+    if(value.username===''){
+        errors.username="Username is Requried.!";
+    } else if(!username_pattern.test(value.username)){
+        errors.username=`${value.username}  is not a valid username`;
+    };
+    return errors;
+}

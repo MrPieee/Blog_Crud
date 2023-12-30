@@ -31,6 +31,10 @@ const UserSchema=new mongoose.Schema({
             message:(props)=>`${props.value}is not a valid email`
         }
     }, 
+    googleUser:{
+        type:Boolean,
+        require:true,
+    },
     password:{
         type:String,
         require:true,

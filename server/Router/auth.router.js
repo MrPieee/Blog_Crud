@@ -21,6 +21,7 @@ authRouter.post('/user/signUp',async(req,res)=>{
                   const addUser=new User({
                       name:name,
                       email:email,
+                      googleUser:false,
                       username:username,
                       password:hash,
                   });
@@ -94,8 +95,35 @@ authRouter.post('/user/signUp',async(req,res)=>{
         try {
             const {email,username}=req.body;
             const user=await User.findOne({email:email});
-            const oldUsername=user.username;
-            if(user && oldUsername===username) {
+            if(!user){
+                const addUser=new User({
+                    name:req.body.name,
+                    email:email,
+                    googleUser:true,
+                    password:'',
+                    username:username,
+                });
+                const newUser=await addUser.save();
+                    const payload={
+                        username:newUser.username,
+                        userId:newUser._id
+                    }
+                    const token= jwt.sign(payload, process.env.JWT_SECRET,  { expiresIn: '7d' });
+            
+                    res.cookie("token",token,{
+                        httpOnly:true,
+                        maxAge:'604800000'
+                    });  
+                return res.status(200).json({
+                    success:true,
+                    message:'User Logged In Successfully',
+                    username:newUser.username,
+                    token:token
+            });
+            }
+            if(user) {
+                const googleUser=user.googleUser;
+                   if(googleUser===true){
                     const payload={
                         username:user.username,
                         userId:user._id
@@ -112,39 +140,14 @@ authRouter.post('/user/signUp',async(req,res)=>{
                         username:user.username,
                         token:token
                     });
+                   }
+
+                   if(googleUser===false){
+                    return res.status(400).json({message:'User Already exist'});
+                }
             }
 
-            if(user && oldUsername!==username){
-                return res.status(400).json({message:'User Already exist'});
-            }
-
-            if(!user){
-                    const addUser=new User({
-                        name:req.body.name,
-                        email:email,
-                        password:'',
-                        username:username,
-                        profilePic:req.body.profilePic,
-                    });
-                    const newUser=await addUser.save();
-                        const payload={
-                            username:newUser.username,
-                            userId:newUser._id
-                        }
-                        const token= jwt.sign(payload, process.env.JWT_SECRET,  { expiresIn: '7d' });
-                
-                        res.cookie("token",token,{
-                            httpOnly:true,
-                            maxAge:'604800000'
-                        });  
-                    return res.status(200).json({
-                        success:true,
-                        message:'User Logged In Successfully',
-                        username:newUser.username,
-                        token:token
-                });
-           }
-          
+            
         } catch (error) {
             return res.status(500).json({message:error.message});
         }
