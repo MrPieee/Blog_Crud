@@ -50,16 +50,48 @@
     text-align: justify;
 }
 
+.VBlgOthers h2{
+    text-align: right;
+}
+.VBlgOthers h2 a{
+    color: greenyellow;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+.samecataBolg{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+#smCatHd{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: chartreuse;
+    display: inline-block;
+    margin: 1rem;
+    border-bottom: 3px solid rgb(207, 2, 207);
+}
+.samecataBolg .blg{
+    width: 21rem;
+}
+
+.samecataBolg .blg img{
+    width: 20rem;
+    height: 15rem;
+    margin: .3rem;
+}
+.samecataBolg .blg p{
+    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+}
+
 @media screen and (max-width:1000px) {
     
     .detailCont .blogImg{
         width: 80%;
         height: 22rem;
     }
-}
 
-@media screen and (max-width:1000px) {
-    
     .blogDetail .detailCont .userInfo img{
         width: 3rem;
     }.detailCont .blogImg{
@@ -73,24 +105,11 @@
         font-size: 1.4rem;
         width: 80%;
     }
-
-}
-
-@media screen and (max-width:800px) {
-    
-    .blogDetail .detailCont .userInfo img{
-        width: 3rem;
-    }.detailCont .blogImg{
-        width: 80%;
-        height: 22rem;
-    }.detailCont h1{
-        font-size: 2rem;
-        font-weight: 700;
-    }.detailCont .dsc{
-        font-size: 1.2rem;
+    .samecataBolg{
+        grid-template-columns: auto auto;
     }
-
 }
+
 
 @media screen and (max-width:800px) {
     
@@ -120,6 +139,9 @@
         font-size: 1.5rem;
     }.detailCont .dsc{
         font-size: 1rem;
+    }
+    .samecataBolg{
+        grid-template-columns: auto;
     }
 
 }

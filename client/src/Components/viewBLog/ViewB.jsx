@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './view.css';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Comment from './Comment/Comment';
+import { Footer } from '../footer/Footer';
 
 function BlogDetails() {
     const [isloadding,setIsloadding]=useState(true);
@@ -9,6 +10,7 @@ function BlogDetails() {
 
 
     const [blog,setBlog]=useState({});
+    const [catablog,setCataBlog]=useState([]);
 
     const fetchBlog= async (blogId) => {
         await fetch(`/api/blog/singleBlog/${blogId}`)
@@ -21,15 +23,32 @@ function BlogDetails() {
         }).catch((err)=>alert(err.message));
     };
 
+
+    const cataBlogFetch= async (blogCatagory) => {
+      await fetch(`/api/blog/catagoryWaysBlog/${blogCatagory}`)
+      .then((res)=>res.json())
+      .then((res)=>{
+        setCataBlog(res);
+        if (res) {
+          setIsloadding(false);
+        }
+      }).catch((err)=>alert(err.message));
+  };
+
+
     useEffect(() => {
       fetchBlog(blogId);
-    }, [blogId]);
+      cataBlogFetch(blog.catagory);
+    }, [blogId,blog.catagory]);
 
     const {catagory,photo,title,dsc,userPp,username}=blog;
     return (
         <div className='blogDetail'>
             {
-              isloadding===true?<h1>Loadding...</h1>
+              isloadding===true?
+              <div className="loder">
+                  <div className="ring"></div> 
+              </div>
               :
               <>
                 <div className='detailCont flexCol textCenter'>
@@ -37,7 +56,7 @@ function BlogDetails() {
                     <img src={userPp==='https://i.postimg.cc/xCHs0vfR/user2.jpg'?userPp:`/userProfile/${userPp}`} alt="userProfile" className=' width1s' />
                     <div className=' mgRHalf'>
                       <p>Posted by {username}</p>
-                      <p>{catagory.toLocaleUpperCase()} Story</p>
+                      <p>{catagory} blog</p>
                     </div>
                   </div>
                   <img src={`/blogImages/${photo}`} alt="blogpicture" className='blogImg' />
@@ -46,6 +65,29 @@ function BlogDetails() {
                 </div><hr />
 
                   <Comment blogId={blogId} blogUsername={username}/>
+                  
+                   <div className="VBlgOthers flexColCenter">
+                    <h3 id='smCatHd'>{catagory} catagory's others blog</h3>
+                      <div className="samecataBolg">
+                          {
+                              catablog.slice(0,6).map((blogg)=>{
+                                const {_id,title,photo}=blogg;
+                                return(
+                                  <Link to={`/blog_details/${_id}`} style={{color:'white'}}>
+                                      <div className="blg">
+                                          <img src={`/blogImages/${photo}`} alt="" />
+                                          <p>{title}</p>
+                                      </div>
+                                  </Link>
+                                )
+                              })
+                            }
+                      </div>
+                    <h2><a href={`/catagory/${catagory}`}>---see all ---{'>'}</a></h2>
+                    </div>   
+
+
+                  <footer><Footer/></footer>
               </>
             } 
             

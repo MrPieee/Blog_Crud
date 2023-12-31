@@ -138,17 +138,20 @@ userRouter.patch('/user/updateDataWithProfile/:id',upload.single('proflePhoto'),
          const userUpdate= await User.findOneAndUpdate({_id:id},{$set:{
              profilePic:profile,
              name:req.body.name,
+             username:req.body.username,
          }},{new:true});
 
          const blogUserPUp=await blogModel.updateMany({user:id},{
             $set:{
-                userPp:profile
+                userPp:profile,
+                username:req.body.username,
             }
          },{new:true});
 
          const commentUserPUp=await commentModel.updateMany({commentUsername:user.username},{
             $set:{
-                userPp:profile
+                userPp:profile,
+                commentUsername:req.body.username,
             }
          },{new:true});
 
@@ -164,13 +167,27 @@ userRouter.patch('/user/updateDataWithProfile/:id',upload.single('proflePhoto'),
 
 userRouter.patch('/user/updateData/:id',async(req,res)=>{
     try {
-         const id=req.params.id;
-         const userDataUpdate= await User.findOneAndUpdate({_id:id},{$set:{
+        const id=req.params.id;
+        const user=await User.findById(id);
+        const userUpdate= await User.findOneAndUpdate({_id:id},{$set:{
             name:req.body.name,
+            username:req.body.username,
         }},{new:true});
-        if(userDataUpdate){
+        const blogUserPUp=await blogModel.updateMany({user:id},{
+           $set:{
+               username:req.body.username,
+           }
+        },{new:true});
+
+        const commentUserPUp=await commentModel.updateMany({commentUsername:user.username},{
+           $set:{
+               commentUsername:req.body.username,
+           }
+        },{new:true});
+        if(userUpdate && blogUserPUp && commentUserPUp){
             res.status(201).json({message:"Profile has been updated",status:201});
         }
+
     } catch (error) {
         return res.status(500).json({message:error.message});    
     }

@@ -34,13 +34,17 @@ const Login = () => {
             })
             .then((res)=>res.json())
             .then((res)=>{
-                if(res){
+                if(res.success===false){
                     alert(res.message);
+                    window.location.href='/logIn';
+                }else{
                     window.location.href='/';
                 }
             })
             .catch((error)=>{
                 alert(error.message);
+                window.location.href='/logIn';
+
             });
          }else{
             setError('Please Enter Your Eamil and password');

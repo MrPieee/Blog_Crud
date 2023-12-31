@@ -1,9 +1,12 @@
 import React from 'react';
 import './privacy.css';
+import { Footer } from '../footer/Footer';
 
 const PrivacyPolicy = () => {
 
   return (
+    <>
+    
     <div className='privacy flexColCenter'>
         <div className="crayons-layout">
       <div className="crayons-card ">
@@ -325,7 +328,10 @@ const PrivacyPolicy = () => {
 
       </div>
     </div>
+   
     </div>
+     <footer><Footer/></footer>
+    </>
   );
 };
 

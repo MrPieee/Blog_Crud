@@ -14,8 +14,8 @@ authRouter.post('/user/signUp',async(req,res)=>{
       if(email && username && password){
          const userEmail=await User.findOne({email:email});
          const userUsername=await User.findOne({username:username});
-          if(userEmail)return res.status(400).json({message:'The email used already another account'});
-          if(userUsername)return res.status(400).json({message:'Username is not available'});
+          if(userEmail)return res.status(400).json({message:'The email used already another account',status:400});
+          if(userUsername)return res.status(400).json({message:'Username is not available',status:400});
           if(!userEmail && !userUsername){
               bcrypt.hash(password, saltRounds, async (err, hash) => {
                   const addUser=new User({
@@ -27,7 +27,8 @@ authRouter.post('/user/signUp',async(req,res)=>{
                   });
                   const newUser=await addUser.save();
                   res.status(201).json({
-                      message:'User Registation Successfully'
+                      message:'Thanks for your Registation',
+                      status:201
                   });
               });
           
@@ -50,12 +51,12 @@ authRouter.post('/user/signUp',async(req,res)=>{
     if(email&&password){
         const user=await User.findOne({email:email});
         if(!user){
-            return res.status(404).json({message:`Don't match your mail`});
+            return res.status(404).json({message:`Don't match your mail`,success:false,});
         }
         if(!bcrypt.compareSync(password, user.password)){
             return res.status(404).json({
                 success:false,
-                message:'Dont Match The password'
+                message:'Dont Match The password',
             });
         }
     
@@ -143,7 +144,7 @@ authRouter.post('/user/signUp',async(req,res)=>{
                    }
 
                    if(googleUser===false){
-                    return res.status(400).json({message:'User Already exist'});
+                    return res.status(400).json({message:'User Already exist',success:false});
                 }
             }
 
@@ -177,7 +178,7 @@ authRouter.post('/user/signUp',async(req,res)=>{
   authRouter.get('/user/profile',cheakAuth,async(req,res)=>{
     try {
      // const username=req.username;
-     const user=await User.findOne({username:req.username});
+     const user=await User.findById(req.userId);
      if(user){
          res.status(200).json(user);
      }

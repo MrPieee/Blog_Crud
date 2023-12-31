@@ -85,10 +85,11 @@ function CreateBlog() {
                       <option>Select a Catagory</option>
                       <option value="love">Love</option>
                       <option value="success">Success</option>
-                      <option value="sad">Sad</option>
-                      <option value="broken">Broken</option>
                       <option value="education">Education</option>
                       <option value="programming">Programming</option>
+                      <option value="romantic">Romantic</option>
+                      <option value="sad">Sad</option>
+                      <option value="broken">Broken</option>
                       <option value="thriller">Thriller</option>
                       <option value="health">Health</option>
                       <option value="games">Games</option>

@@ -1,8 +1,12 @@
 import React from 'react';
 import './terms.css';
+import { Footer } from '../footer/Footer';
 
 const Terms = () => {
   return (
+    <>
+    
+            
     <div className='terms flexColCenter'>
         <div className="termsCont">
         <h1 className='termsHeading'> Web Site Terms and Conditions of Use</h1>
@@ -93,7 +97,10 @@ const Terms = () => {
 
           <h3>General Terms and Conditions applicable to Use of a Web Site.</h3>
         </div>
+       
     </div>
+     <footer><Footer/></footer>
+    </>
   );
 };
 

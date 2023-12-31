@@ -24,6 +24,7 @@ const Profile = () => {
     });
   };
 
+  // console.log(user)
 
   const userBlogFetch=async(userId)=>{
     await fetch(`/api/blog/userBlogs/${userId}`)
@@ -65,8 +66,10 @@ const Profile = () => {
   return (
     <div className='profile'>
         {
-          loading
-          ?<h1>Loading...</h1>
+          loading?
+          <div className="loder">
+              <div className="ring"></div> 
+          </div>
           :
           <>
             <div className="profileInfo flexColCenter">
@@ -77,9 +80,6 @@ const Profile = () => {
                 </div><hr />
             </div>
             <div className="userBlogs flexColCenter">
-                <div className="blogsHed">
-                  <h3>Your Blogs :</h3>
-                </div>
                 {
                   userBlogs.map((blog)=>{
                     const {_id,photo,title,dsc,userPp,username}=blog;

@@ -3,6 +3,7 @@ import './catagory.css';
 import {Link, useParams} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Footer } from '../footer/Footer';
 
 const Catagory= () => {
     const [isloadding,setIsloadding]=useState(true);
@@ -62,14 +63,19 @@ const Catagory= () => {
 
     // console.log(catasBlogs);
     return (
-        <div className=' catagory flexColCenter pad2'>
+      <>
+      
+      <div className=' catagory flexColCenter pad2'>
             {
-                isloadding===true? <h1>Loadding....</h1>
+                isloadding===true? 
+                <div className="loder">
+                    <div className="ring"></div> 
+                </div>
                 :<>
                     {
                         catasBlogs.length===0 ? <h1 className=' height100VH'> No one find Blogs On {blogCatagory.toUpperCase()} catagory</h1>
                         :<>
-                        <h1>{blogCatagory.toUpperCase()} Story's Blogs </h1>
+                        <h1>{blogCatagory.toUpperCase()} catagory's Blogs </h1>
                         {
                             catasBlogs.map((blog)=>{
                                 const {_id,photo,title,dsc,userPp,username}=blog;
@@ -99,9 +105,12 @@ const Catagory= () => {
                         }
                          </>
                     }
+                   
                 </>
             }
         </div>
+       <footer><Footer/></footer>
+      </>
     );
 };
 

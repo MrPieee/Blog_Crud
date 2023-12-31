@@ -44,6 +44,7 @@
     border-radius: .8rem;
     border: none;
     padding: .5rem;
+    cursor: pointer;
     margin: 1rem;
 }
 

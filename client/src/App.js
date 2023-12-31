@@ -2,7 +2,6 @@ import { createContext, useEffect, useState } from 'react';
 import './App.css';
 import Header from './Components/Header/Header';
 import Router from './Components/Router/Router';
-import { Footer } from './Components/footer/Footer';
 
 export const LogInContext =createContext({});
 
@@ -32,12 +31,14 @@ const App= ()=> {
     <LogInContext.Provider value={[logInAuth,setLogInAuth]}>
       <div className="App flexCol">
           {
-            isLoading ===true ? <h1>Loading...</h1>
+            isLoading ===true ? 
+            <div className="loder">
+                <div className="ring"></div> 
+            </div>
             :
             <>
               <Header/>
               <Router/>
-              <footer className=' bgBlack'><Footer/></footer>
             </>
           }
       </div>

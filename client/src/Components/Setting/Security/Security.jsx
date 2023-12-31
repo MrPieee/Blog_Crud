@@ -90,7 +90,10 @@ const Security=()=> {
         <div className='secure flexColCenter'>
                 <div className="passwordChangeForm flexColCenter">
                     {
-                        isLoading===true? <h1>Loading..</h1>
+                        isLoading===true? 
+                        <div className="loder">
+                            <div className="ring"></div> 
+                        </div>
                         :<form onSubmit={(e)=>e.preventDefault()}>
 
                         {

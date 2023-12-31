@@ -99,14 +99,21 @@ const Header = () => {
                            }
                         </div>
                       </li>
-                    <Link to={'/create-and-post-a-blog'} className='textDecorNone bgWhite navLink'>
+                    {
+                      loginAuth===true?
+                      <Link to={'/create-and-post-a-blog'} className='textDecorNone bgWhite navLink'>
                       <li className="navList mg1 fontSm colorBlack fontBold1">Create-Blog</li>
-                    </Link>
-                    <Link to={'/Profile'} className='textDecorNone bgWhite navLink'>
+                    </Link>:''
+                    }
+                    {
+                      loginAuth===true?
+                      <Link to={'/Profile'} className='textDecorNone bgWhite navLink'>
                       <li className="navList mg1 fontSm colorBlack fontBold1">Profile</li>
-                    </Link>
+                    </Link>:''
+                    }
+                    
                       <li>
-                      <div className="SettingDrop">
+                      <div className="SettingDrop mg1">
                           <button onClick={()=>{
                             setSettingDropOpen(!settingDropOpen);
                           }}>Setting {settingDropOpen===true ?<FontAwesomeIcon icon={faClose}/>:'>'} </button>
@@ -114,9 +121,12 @@ const Header = () => {
                             settingDropOpen===true?
                             <>
                              <ul className='flexColCenter dropUL'  style={{listStyle:"none"}}>
-                                <Link to={'/setting/account'} className='textDecorNone bgWhite navLink'>
-                                  <li>Account</li>
-                                </Link>
+                                {
+                                  loginAuth===true?
+                                  <Link to={'/setting/account'} className='textDecorNone bgWhite navLink'>
+                                    <li>Account</li>
+                                  </Link>:''
+                                }
                                 <Link to={'/app/terms&condition'} className='textDecorNone bgWhite navLink'>
                                   <li>Trems</li>
                                 </Link>
@@ -125,6 +135,9 @@ const Header = () => {
                                 </Link>
                                 <Link to={'/app/Privacy&Policy'} className='textDecorNone bgWhite navLink'>
                                   <li>Privacy&Policy</li>
+                                </Link>
+                                <Link to={'/app/contact'} className='textDecorNone bgWhite navLink'>
+                                  <li>CONTACT</li>
                                 </Link>
                                 <li>
                                 {

@@ -95,7 +95,8 @@ blogRouter.get("/blog/userBlogs/:userId",async(req,res)=>{
    const userId=req.params.userId;
    const userblogs=await blogModel.find({user:userId});
    if (userblogs) {
-     return res.status(200).json(userblogs);
+    
+     return res.status(200).json(userblogs.reverse());
    } else {
      return res.status(400).json({message:"Sorry..!!can't find your blogs"});
    }

@@ -1,0 +1,172 @@
+.conatct{
+    margin: 6rem 2rem 0 0 ;
+}
+
+.contactCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: .6rem;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+}
+
+.contactSec1{
+    background-color: rgb(255, 255, 255);
+    border-radius: 1rem;
+    margin: 1rem;
+    padding: 1rem 2rem;
+}
+
+
+.contactSec1 form input{
+    width: 25rem;
+    background-color: rgb(181, 253, 255);
+    height: 4rem;
+    margin: .5rem;
+    padding: 0 1rem;
+    border-radius: .2rem;
+    border: 2px solid black;
+    outline: none;
+    font-size: 1.1rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    color: rgb(1, 27, 21);
+ }
+ 
+ .contactSec1 form input:focus{
+     box-shadow: 0 1px .5rem 1px  rgb(0, 255, 0);
+ }
+ .contactSec1 form textarea{
+    width: 35rem;
+    background-color: rgb(172, 249, 255);
+    height: 25rem;
+    margin: .5rem;
+    padding: 0 1rem;
+    border-radius: .2rem;
+    border: 2px solid black;
+    outline: none;
+    font-size: 1.1rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    color: rgb(1, 27, 21);
+    resize: none;
+ } .contactSec1 form textarea:focus{
+    box-shadow: 0 1px .5rem 1px  rgb(0, 255, 0);
+}
+
+ .contactSec1 form button{
+     width: 20rem;
+     text-align: center;
+     font-size: 1.4rem;
+     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+     font-weight: 900;
+     background-color: rgb(12, 228, 145);
+     color: whitesmoke;
+     border-radius: .8rem;
+     border: none;
+     padding: .5rem;
+     cursor: pointer;
+     margin: 1rem;
+ }
+
+
+.contactSec2{
+    padding: 2rem;
+}
+
+.contactSec2 h1{
+    padding: 2rem;
+    text-align: center;
+    font-size: 10rem;
+    color: rgb(122, 191, 252);
+}
+
+.contactSec2 ul{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: center;
+}
+
+.contactSec2 ul li{
+    margin: 1rem;
+}
+
+.contactSec2 ul li button{
+    background: none;
+    border: none;
+    font-size: 2.3rem;
+    color: rgb(177, 196, 5);
+
+}  
+
+
+.contactSec2 h2{
+    font-size: 1.2rem;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    color: aliceblue;
+}
+
+
+@media screen and (max-width:1200px) {
+    
+    .contactSec1{
+        padding: 1rem;
+    }
+    .contactSec1 form input{
+        width: 22rem;
+    }
+    
+    .contactSec1 form textarea{
+        width: 30rem;
+        height: 20rem;
+    }
+
+    .contactSec2{
+        padding: 1rem;
+    }
+    .contactSec2 h1{
+        padding: 1rem;
+        font-size: 7rem;
+    }
+    .contactSec2 h2{
+        font-size: 1.2rem;
+        font-family: 'Courier New', Courier, monospace;
+        color: aliceblue;
+    }
+
+}
+
+
+
+@media screen and (max-width:900px) {
+    
+    .contactCont {
+        flex-direction: column-reverse;
+    }
+
+}
+
+@media screen and (max-width:600px) {
+    .contactCont {
+        background: none;
+    }
+    .contactSec1{
+        padding: .2rem .4rem;
+        background: none;
+    }
+    .contactSec1 form input{
+        width: 18rem;
+    }
+    
+    .contactSec1 form textarea{
+        width: 20rem;
+        height: 17rem;
+    }
+    .contactSec2 h1{
+        font-size: 5rem;
+    }
+
+}

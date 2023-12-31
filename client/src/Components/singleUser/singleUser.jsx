@@ -75,7 +75,10 @@ const SingleUser = () =>{
       <div className='sUser'>
           {
             loading
-            ?<h1>Loading...</h1>
+            ?
+            <div className="loder">
+                <div className="ring"></div> 
+            </div>
             :
             <>
              {
@@ -91,9 +94,6 @@ const SingleUser = () =>{
                     </div><hr />
                 </div>
                 <div className="userBlogs flexColCenter">
-                    <div className="blogsHed">
-                      <h3>{username}'s Blogs :</h3>
-                    </div>
                     {
                       userBlogs.map((blog)=>{
                         const {_id,photo,title,dsc,userPp,username}=blog;

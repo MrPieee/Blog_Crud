@@ -1,6 +1,6 @@
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { Validation } from '../validation/validation';
 import { GoogleLogin } from '../GoogleLogIn/Google';
@@ -13,12 +13,27 @@ const Register = () =>  {
     username:'',
     password:''
   });
-  
+
+  const [allUsers,setAllUsers]=useState([]);
+
+  useEffect(()=>{
+    const AllUserFetch=async()=>{
+        await fetch('/api/users')
+        .then((res)=>res.json())
+        .then((res)=>{
+          if (res) {
+            setAllUsers(res);
+          };
+        });
+      };
+      AllUserFetch();
+  },[])
+
   const [error,setError]=useState({})
 
   const handleSubmit=(e)=>{
     e.preventDefault();
-    setError(Validation(userInp));
+    setError(Validation(userInp,allUsers));
   }
 
   const handleInputValue=(e)=>{
@@ -32,7 +47,8 @@ const Register = () =>  {
     if(!error.name && !error.email && !error.username && !error.password){
         const {name,email,username,password}=userInp;
         if(name && email && username && password){
-           await fetch('/api/user/signUp',{
+
+            await fetch('/api/user/signUp',{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json"
@@ -46,9 +62,9 @@ const Register = () =>  {
             })
             .then((res)=>res.json())
             .then((res)=>{
-                if(res){
-                    alert(res.message);
-                    window.location.href='/login';
+                if(res.status===201){
+                  window.location.href='/logIn';
+                  console.log(res.message);
                 }
             })
             .catch((error)=>{
@@ -85,7 +101,7 @@ const Register = () =>  {
                         <p style={{color:'blue'}}>Already have an account / <Link to={'/login'}>LogIn</Link> </p>
                         <h3 className=' colorBlack mg1'>or</h3>
                 </form>
-                <button onClick={handleGoogleLogIn} className='googleBtn'> <FontAwesomeIcon icon={faGoogle} /> Continue with Google</button>
+                <button onClick={handleGoogleLogIn} className='googleBtn' > <FontAwesomeIcon icon={faGoogle} /> Continue with Google</button>
             </div>
         </div>
     );
