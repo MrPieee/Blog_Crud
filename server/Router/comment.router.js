@@ -18,21 +18,31 @@ commentRouter.post('/comment/commentPost',async(req,res)=>{
   }
 });
 
-// Get All comment from Db
+// Get An user comments from Db
 
- commentRouter.get("/comment/allcomments",async(req,res)=>{
+ commentRouter.get("/comment/userComments/:username",async(req,res)=>{
   try {
-   const userComments=await commentModel.find();
+    const username=req.params.username;
+   const userComments=await commentModel.find({commentUsername:username});
    if (userComments) {
      return res.status(200).json(userComments);
-   } else {
-     return res.status(400).json({message:"Sorry..!!can't find this posts comments"});
    }
   } catch (error) {
    return res.status(400).json({message:error.message});
   };
  });
 
+//  commentRouter.get("/comment/userComment",async(req,res)=>{
+//   try {
+ 
+//    const userComments=await commentModel.find();
+//    if (userComments) {
+//      return res.status(200).json(userComments);
+//    }
+//   } catch (error) {
+//    return res.status(400).json({message:error.message});
+//   };
+//  });
  // Get Blog comments from Db
 
  commentRouter.get("/comment/blogcomments/:blogId",async(req,res)=>{
@@ -61,11 +71,29 @@ commentRouter.delete("/comment/delete/:commentId",async(req,res)=>{
     if (comment.commentUsername===username||blog.username===username) {
         const deletecomment=await commentModel.findByIdAndDelete(commentId);
         if(deletecomment){
-            return res.status(200).json({message:"This comment has been deleted"});
+            return res.status(200).json({message:"Your comment has been deleted"});
           }
     } else {
         return res.status(404).json({message:`Sorry..!! You also delete your comment `});
     }
+
+  } catch (error) {
+    return res.status(404).json({message:error.message});
+  };
+
+});
+
+
+// Delete a user all comments from DB
+
+commentRouter.delete("/comment/deleteUserComments/:username",async(req,res)=>{
+  try {
+    const username=req.params.username;
+    const deletecomments=await commentModel.deleteMany({commentUsername:username});
+    if(deletecomments){
+        return res.status(200).json({message:"Your all comments has been deleted"});
+      }
+
 
   } catch (error) {
     return res.status(404).json({message:error.message});

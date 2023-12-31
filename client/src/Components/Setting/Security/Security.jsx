@@ -53,7 +53,7 @@ const Security=()=> {
                     setPass3('')
                 };
             }).catch((err)=>alert(err.message));
-        } else if(pass2===pass3){
+        } else if(pass2===pass3 && !pass1){
             setError('');
             await fetch(`/api/user/updatePass/${userId}`,{
                 method:"PATCH",
@@ -61,7 +61,7 @@ const Security=()=> {
                     "Content-Type":"application/json"
                 },
                 body:JSON.stringify({
-                    newPass:pass3
+                    password:pass3
                 })
             })
             .then((res)=>res.json())
@@ -71,6 +71,11 @@ const Security=()=> {
                 }else{
                     setIsLoading(false);
                     alert(res.message);
+                    setIsLoading(false);
+                    alert(res.message);
+                    setPass1('')
+                    setPass2('')
+                    setPass3('')
                 };
             }).catch((err)=>alert(error.message));
         }else{

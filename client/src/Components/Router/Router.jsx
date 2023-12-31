@@ -18,6 +18,7 @@ import Setting from '../Setting/Setting';
 import EditProfile from '../Setting/editP/EditProfile';
 import Security from '../Setting/Security/Security';
 import { Controll } from '../Setting/Controller/Controller';
+import  PrivacyPolicy  from '../PrivacyPolicy/Privacy';
 const Router = () => {
   const [loginAuth]=useContext(LogInContext);
 
@@ -30,6 +31,7 @@ const Router = () => {
           <Route path='*' element={<E404/>}/>
           <Route path='/app/about' element={<About/>}/>
           <Route path='/app/terms&condition' element={<Terms/>}/>
+          <Route path='/app/Privacy&Policy' element={<PrivacyPolicy/>}/>
           <Route path='/blog_details/:blogId' element={<ViewB/>}/>
           <Route path='/catagory/:blogCatagory' element={<Catagory/>}/>
 

@@ -123,6 +123,9 @@ const Header = () => {
                                 <Link to={'/app/about'} className='textDecorNone bgWhite navLink'>
                                   <li>About Us</li>
                                 </Link>
+                                <Link to={'/app/Privacy&Policy'} className='textDecorNone bgWhite navLink'>
+                                  <li>Privacy&Policy</li>
+                                </Link>
                                 <li>
                                 {
                                     loginAuth

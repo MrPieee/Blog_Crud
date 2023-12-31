@@ -1,27 +1,38 @@
 
-#profileInfo{
-    border-radius: 1rem;
-    box-shadow: 2px 4px 8px 2px rgb(50, 205, 179);
-    padding:1rem 0;
+.userAllBlogs{
+    display: grid;
+    grid-template-columns: auto auto;
 }
 
-#profileInfo img{
-    width: 15rem;
+
+.userAllBlogs .blog{
+    text-align: center;
+    width: 20rem;
     height: 15rem;
-    border-radius: 50%;
-    box-shadow: 2px 4px 8px 2px yellowgreen;
+    background-color: black;
+    box-shadow: 1px 2px 4px 2px aquamarine;
+    border-radius: 1rem;
+    margin: .2rem;
+    padding: .2rem 0;
 }
-#profileInfo h3,h4{
-    margin: 1rem;
+
+.userAllBlogs .blog p{
+    text-align: center;
+    color: aliceblue;
+    font-size: 1rem;
     font-family: 'Courier New', Courier, monospace;
+    margin: .2rem 0;
 }
-#profileInfo hr{
-    width: 25rem;
-    color: cornflowerblue;
+
+.userAllBlogs .blog img{
+    width: 15rem;
+    height: 10rem;
+    border-radius: .4rem;
 }
 
 
-.popup{
+
+.bpopup{
     z-index: 1000000;
     background-color: rgba(255, 255, 255, 0.856);
     position: absolute;
@@ -38,7 +49,7 @@
     align-items: center;
 }
 
-.poCont{
+.bpoCont{
     width: 30rem;
     height: 25rem;
     background-color: black;
@@ -49,21 +60,21 @@
     justify-content: center;
     align-items: center;
 }
-.poCont button{
+.bpoCont button{
     cursor: pointer;
 }
-.poCont h3{
+.bpoCont h3{
     width: 15rem;
     margin: 0 auto;
 }
-.poCont form{
+.bpoCont form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 1rem;
 }
-.poCont form input{
+.bpoCont form input{
     width: 25rem;
     height: 4rem;
     font-size: 1.2rem;
@@ -80,8 +91,12 @@
 }
 
 @media screen and (max-width:600px) {
+    .userAllBlogs{
+        display: grid;
+        grid-template-columns: auto;
+    }
     
-.poCont{
+.bpoCont{
     width: 22rem;
     height: 22rem;
     background-color: black;
@@ -92,11 +107,11 @@
     justify-content: center;
     align-items: center;
 }
-.poCont h3{
+.bpoCont h3{
     width: 15rem;
     margin: 0 auto;
 }
-.poCont form input{
+.bpoCont form input{
     width: 15rem;
     height: 3rem;
 }

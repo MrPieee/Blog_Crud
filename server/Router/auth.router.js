@@ -100,7 +100,7 @@ authRouter.post('/user/signUp',async(req,res)=>{
                     name:req.body.name,
                     email:email,
                     googleUser:true,
-                    password:'',
+                    password:' ',
                     username:username,
                 });
                 const newUser=await addUser.save();

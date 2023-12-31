@@ -20,3 +20,7 @@
     outline: none;
 
 }
+
+#accountController ,#blogController ,#commentController{
+    display: none;
+}

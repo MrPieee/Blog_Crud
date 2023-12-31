@@ -1,0 +1,65 @@
+
+.privacy{
+    margin: 6rem 2rem 4rem 4rem ;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.crayons-layout{
+    background-color: aliceblue;
+    color: black;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+
+.privacy h2{
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(4, 64, 66);
+}
+
+.privacy p{
+    font-size: 1.1rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.privacy p a{
+   font-size: 1.5rem;
+   padding: .4rem;
+}
+
+.privacy ul{
+    padding: 0 0 3rem 2rem;
+}
+
+@media screen and (max-width:780px) {
+    
+        .privacy{
+            margin: 6rem 2rem 1rem 1rem ;
+            padding: .5rem;
+        }
+
+        .privacy .crayons-layout{
+            padding: 1rem;
+        }
+
+
+        .privacy h2{
+            font-size: 1.3rem;
+        }
+
+        .privacy p{
+            font-size: 1rem;
+        }
+
+        .privacy p a{
+        font-size: 1.2rem;
+        }
+
+        .privacy ul{
+            padding: 0 0 2rem 2rem;
+        }
+}

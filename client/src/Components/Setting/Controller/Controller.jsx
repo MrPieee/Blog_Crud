@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './controll.css';
 import { AcContrl } from './accountCnrtl/AcContrl';
+import { BlgCntrl } from './blgCntrl/BlgCntrl';
+import { CmntCntrl } from './cmntCnrt/CmntCntrl';
 
 export const Controll= () => {
 
@@ -19,23 +21,44 @@ export const Controll= () => {
       useEffect(() => {
         userFetch();
       }, []);
+
+      const handleController=(elementName)=>{
+        document.getElementById(elementName).style.display='none';
+        document.querySelector('.controllNav').style.display='block';
+      };
+
   return (
     <div className='controll'>
         <div className="controllNav ">
             <nav className="flexColAiCenter">
-                <button>Account Controll -{'>'} Deletetion</button>
-                <button>Blog Controller</button>
-                <button>Comment Controller</button>
+                <button onClick={()=>{
+                  document.getElementById('accountController').style.display='block';
+                  document.getElementById('blogController').style.display='none';
+                  document.getElementById('commentController').style.display='none';
+                  document.querySelector('.controllNav').style.display='none';
+                }}>Account Controll -{'>'} Deletetion</button>
+                <button onClick={()=>{
+                  document.getElementById('accountController').style.display='none';
+                  document.getElementById('blogController').style.display='block';
+                  document.getElementById('commentController').style.display='none';
+                  document.querySelector('.controllNav').style.display='none';
+                }}>Blog Controller</button>
+                <button onClick={()=>{
+                  document.getElementById('accountController').style.display='none';
+                  document.getElementById('blogController').style.display='none';
+                  document.getElementById('commentController').style.display='block';
+                  document.querySelector('.controllNav').style.display='none';
+                }}>Comment Controller</button>
             </nav>
         </div>
-        <div className="accountController">
-            <AcContrl user={user}/>
+        <div id="accountController">
+            <AcContrl user={user} handleController={handleController}/>
         </div>
-        <div className="blogController">
-            
+        <div id="blogController">
+            <BlgCntrl userId={user._id} handleController={handleController} />
         </div>
-        <div className="commentController">
-            
+        <div id="commentController">
+            <CmntCntrl username={user.username} handleController={handleController}/>
         </div>
     </div>
   );

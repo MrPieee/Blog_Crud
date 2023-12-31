@@ -1,0 +1,47 @@
+.terms{
+    padding: 2rem;
+    margin: 6rem 2rem 4rem 4rem;
+    background-color: aliceblue;
+    color: black;
+    border-radius: 1.4rem;
+}
+
+.termsHeading{
+    display: inline;
+    border-bottom: 3px solid blue;
+}
+
+.termText {
+    margin: 1rem;
+}
+
+.termText h1{
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline;
+    border-bottom: 3px solid rgb(41, 65, 3);
+    margin: .5rem;
+}
+
+.termText p{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1rem;margin: .5rem;
+}
+
+@media screen and (max-width:700px) {
+    h1{
+        font-size: 1.3rem;
+    }
+    .terms{
+        padding: 1rem;
+        margin: 6rem 2rem 2rem 2rem;
+        background-color: aliceblue;
+        color: black;
+        border-radius: 1.2rem;
+    }
+    
+    .termText p{
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 1.1rem;
+    }
+}

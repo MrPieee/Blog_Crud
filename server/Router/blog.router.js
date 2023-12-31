@@ -1,8 +1,10 @@
 const blogModel = require('../model/blog.model');
 const blogRouter=require('express').Router();
+const bcrypt=require('bcrypt');
 const multer=require('multer');
 const path =require('path');
 const commentModel = require('../model/comment.model');
+const User = require('../model/admin.model');
 
 const shuffle = (a) => {
   for (let i = a.length; i; i--) {
@@ -195,7 +197,7 @@ blogRouter.delete("/blog/delete/:blogId",async(req,res)=>{
         return res.status(200).json({message:"Your blog has been deleted"});
       }
     } else {
-      return res.status(404).json({message:`Sorry..!! Your Can't delete Another user Blog`});
+      return res.status(400).json({message:`Sorry..!! Your Can't delete Another user Blog`});
     }
  
   } catch (error) {
@@ -204,15 +206,21 @@ blogRouter.delete("/blog/delete/:blogId",async(req,res)=>{
 
 });
 
-blogRouter.delete("/blog/deleteAll/:username",async(req,res)=>{
+blogRouter.delete("/blog/deleteAll/:userId",async(req,res)=>{
   try {
-    const username=req.params.username;
-      const deleteblog=await blogModel.deleteMany({username:username});
-      // const deleteBlogComments=await commentModel.deleteMany({blogId:blogId});
-
-      if(deleteblog){
-        return res.status(200).json({message:"Your blog has been deleted"});
-      }
+    const userId=req.params.userId;
+    const password=req.body.password;
+    const user =await User.findById(userId);
+    if(bcrypt.compareSync(password, user.password)){
+        const deleteblogs=await blogModel.deleteMany({user:userId});
+        // const deleteBlogComments=await commentModel.deleteMany({blogId:});
+        if(deleteblogs){
+          return res.status(200).json({message:"Your All blogs has been deleted"});
+        }
+    }else{
+      return res.status(400).json({message:"Your password is incorrect",status:400});
+    }
+      
 
   } catch (error) {
     return res.status(404).json({message:error.message});

@@ -1,0 +1,10 @@
+#footer-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+#footer-container ul {
+    display: flex;
+    flex-direction: row;
+}

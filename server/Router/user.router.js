@@ -178,16 +178,23 @@ userRouter.patch('/user/updateData/:id',async(req,res)=>{
 
 
 // Delete User From DB
-userRouter.delete('/user/delete/:id',async(req,res)=>{
+userRouter.delete('/user/account_delete/:id',async(req,res)=>{
     try {
         const id=req.params.id;
-        const deleteUser= await User.deleteOne({_id:id});
-        const deleteUserBlog=await blogModel.deleteMany({user:id});
-        if (deleteUser && deleteUserBlog ) {
-            return res.clearCookie('token').status(203).json({message:"Your account has been delete"});
-        } else {
-            return res.status(404).json({message:`Dont Delete Your Account`});
+        const password=req.body.password;
+        const user=await User.findById(id);
+        if(bcrypt.compareSync(password, user.password)){
+            const deleteUser= await User.deleteOne({_id:id});
+            const deleteUserBlog=await blogModel.deleteMany({user:id});
+            if (deleteUser && deleteUserBlog ) {
+                return res.clearCookie('token').status(203).json({message:"Your account has been delete"});
+            } else {
+                return res.status(400).json({message:`Dont Delete Your Account`,status:400});
+            }
+        }else{
+            return res.status(400).json({message:`Your Password Is Incorrect`,status:400});
         }
+       
     } catch (error) {
         return res.status(404).json({message:error.message});    
     }
